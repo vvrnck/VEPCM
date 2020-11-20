@@ -1,44 +1,27 @@
 package com.uff.br.entities;
 
-import org.springframework.lang.NonNull;
-
 import javax.persistence.*;
 
 
 @Entity
-public class Usuario {
+public class Auth {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private int id;
+    private int Id;
 
-  /*  @OneToOne(optional = false)
-    @JoinColumn(name = "pessoa_id", nullable = false)
-    @NonNull
-    private Pessoa pessoa;
-     @NonNull
-    public Pessoa getPessoa() {
-        return pessoa;
-    }
-
-    public void setPessoa(@NonNull Pessoa pessoa) {
-        this.pessoa = pessoa;
-    }
-
-*/
-    @Column(name = "email", unique = true)
+    @Column(name = "email")
     private String email;
 
     @Column(name = "senha")
     private String senha;
 
     public int getId() {
-        return id;
+        return Id;
     }
 
     public void setId(int id) {
-        id = id;
+        Id = id;
     }
-
 
     public String getEmail() {
         return email;
