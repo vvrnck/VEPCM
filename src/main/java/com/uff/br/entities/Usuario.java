@@ -1,13 +1,20 @@
 package com.uff.br.entities;
 
+import org.springframework.lang.NonNull;
+
 import javax.persistence.*;
 
 
 @Entity
-public class Auth {
+public class Usuario {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private int Id;
+    private int id;
+
+//    @OneToOne(optional=false, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "idPessoa", referencedColumnName = "id")
+//    @NonNull
+//    private Pessoa pessoa;
 
     @Column(name = "email")
     private String email;
@@ -16,12 +23,21 @@ public class Auth {
     private String senha;
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        id = id;
     }
+
+//    @NonNull
+//    public Pessoa getPessoa() {
+//        return pessoa;
+//    }
+//
+//    public void setPessoa(@NonNull Pessoa pessoa) {
+//        this.pessoa = pessoa;
+//    }
 
     public String getEmail() {
         return email;
