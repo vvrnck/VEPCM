@@ -11,12 +11,12 @@ public class Usuario {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
 
-//    @OneToOne(optional=false, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "idPessoa", referencedColumnName = "id")
-//    @NonNull
-//    private Pessoa pessoa;
+    @OneToOne(optional = false)
+    @JoinColumn(name = "pessoa_id", nullable = false)
+    @NonNull
+    private Pessoa pessoa;
 
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     private String email;
 
     @Column(name = "senha")
@@ -30,14 +30,14 @@ public class Usuario {
         id = id;
     }
 
-//    @NonNull
-//    public Pessoa getPessoa() {
-//        return pessoa;
-//    }
-//
-//    public void setPessoa(@NonNull Pessoa pessoa) {
-//        this.pessoa = pessoa;
-//    }
+    @NonNull
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(@NonNull Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
 
     public String getEmail() {
         return email;
