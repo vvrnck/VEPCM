@@ -31,9 +31,7 @@ public class Usuario {
     }
 
     @NonNull
-    public Pessoa getPessoa() {
-        return pessoa;
-    }
+    public Pessoa getPessoa() {return pessoa;}
 
     public void setPessoa(@NonNull Pessoa pessoa) {
         this.pessoa = pessoa;
