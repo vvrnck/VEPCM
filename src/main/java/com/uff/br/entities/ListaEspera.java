@@ -15,7 +15,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
+import org.springframework.lang.NonNull;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -34,7 +35,7 @@ public class ListaEspera implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NotNull
+    @NonNull
     @Column(name = "data")
     @Temporal(TemporalType.DATE)
     private Date data;

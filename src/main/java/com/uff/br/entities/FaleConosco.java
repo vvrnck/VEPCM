@@ -1,5 +1,8 @@
 package com.uff.br.entities;
 
+
+import org.springframework.lang.NonNull;
+
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -14,8 +17,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -31,21 +32,21 @@ public class FaleConosco implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
+    @NonNull
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NotNull
+    @NonNull
     @Column(name = "data")
     @Temporal(TemporalType.DATE)
     private Date data;
     @Basic(optional = false)
-    @NotNull
+    @NonNull
     @Size(min = 1, max = 45)
     @Column(name = "assunto")
     private String assunto;
     @Basic(optional = false)
-    @NotNull
+    @NonNull
     @Lob
     @Size(min = 1, max = 2147483647)
     @Column(name = "texto")

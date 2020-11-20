@@ -1,6 +1,6 @@
 package com.uff.br.entities;
 
-import javax.persistence.*;
+
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;

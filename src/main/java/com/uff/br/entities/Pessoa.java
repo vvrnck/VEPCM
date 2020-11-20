@@ -1,6 +1,6 @@
 package com.uff.br.entities;
 
-import javax.persistence.*;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -19,15 +19,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import org.springframework.lang.NonNull;
+
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name = "pessoa")
 @XmlRootElement
-/*@NamedQueries({
+@NamedQueries({
         @NamedQuery(name = "Pessoa.findAll", query = "SELECT p FROM Pessoa p")
         , @NamedQuery(name = "Pessoa.findById", query = "SELECT p FROM Pessoa p WHERE p.id = :id")
         , @NamedQuery(name = "Pessoa.findByIdentidade", query = "SELECT p FROM Pessoa p WHERE p.identidade = :identidade")
@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
         , @NamedQuery(name = "Pessoa.findByCpf", query = "SELECT p FROM Pessoa p WHERE p.cpf = :cpf")
         , @NamedQuery(name = "Pessoa.findBySexo", query = "SELECT p FROM Pessoa p WHERE p.sexo = :sexo")
         , @NamedQuery(name = "Pessoa.findByCelular", query = "SELECT p FROM Pessoa p WHERE p.celular = :celular")
-        , @NamedQuery(name = "Pessoa.findByDtNasc", query = "SELECT p FROM Pessoa p WHERE p.dtNasc = :dtNasc")})*/
+        , @NamedQuery(name = "Pessoa.findByDtNasc", query = "SELECT p FROM Pessoa p WHERE p.dtNasc = :dtNasc")})
 public class Pessoa implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,13 +49,13 @@ public class Pessoa implements Serializable {
     @Column(name = "identidade")
     private String identidade;
     @Basic(optional = false)
-    @NotNull
+    @NonNull
     @Size(min = 1, max = 45)
     @Column(name = "nome")
     private String nome;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="E-mail inválido")//if the field contains email address consider using this annotation to enforce field validation
     @Basic(optional = false)
-    @NotNull
+    @NonNull
     @Size(min = 1, max = 255)
     @Column(name = "email")
     private String email;

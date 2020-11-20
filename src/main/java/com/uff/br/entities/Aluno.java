@@ -1,5 +1,7 @@
 package com.uff.br.entities;
 
+import org.springframework.lang.NonNull;
+
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -15,8 +17,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -38,17 +38,18 @@ public class Aluno implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NotNull
+    @NonNull
+
     @Size(min = 1, max = 45)
     @Column(name = "naturalidade")
     private String naturalidade;
     @Basic(optional = false)
-    @NotNull
+    @NonNull
     @Size(min = 1, max = 255)
     @Column(name = "nome_mae")
     private String nomeMae;
     @Basic(optional = false)
-    @NotNull
+    @NonNull
     @Size(min = 1, max = 255)
     @Column(name = "nome_pai")
     private String nomePai;

@@ -1,6 +1,8 @@
 package com.uff.br.entities;
 
-import javax.persistence.*;
+
+import org.springframework.lang.NonNull;
+
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -14,8 +16,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -43,27 +43,27 @@ public class Endereco implements Serializable {
     @Column(name = "logradouro")
     private String logradouro;
     @Basic(optional = false)
-    @NotNull
+    @NonNull
     @Size(min = 1, max = 45)
     @Column(name = "numero")
     private String numero;
     @Basic(optional = false)
-    @NotNull
+    @NonNull
     @Size(min = 1, max = 45)
     @Column(name = "cep")
     private String cep;
     @Basic(optional = false)
-    @NotNull
+    @NonNull
     @Size(min = 1, max = 45)
     @Column(name = "uf")
     private String uf;
     @Basic(optional = false)
-    @NotNull
+    @NonNull
     @Size(min = 1, max = 255)
     @Column(name = "municipio")
     private String municipio;
     @Basic(optional = false)
-    @NotNull
+    @NonNull
     @Size(min = 1, max = 255)
     @Column(name = "bairro")
     private String bairro;

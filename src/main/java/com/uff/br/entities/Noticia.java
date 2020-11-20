@@ -17,8 +17,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import org.springframework.lang.NonNull;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -39,23 +39,23 @@ public class Noticia implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NotNull
+    @NonNull
     @Column(name = "ano")
     @Temporal(TemporalType.DATE)
     private Date ano;
     @Basic(optional = false)
-    @NotNull
+    @NonNull
     @Lob
     @Size(min = 1, max = 2147483647)
     @Column(name = "conteudo")
     private String conteudo;
     @Basic(optional = false)
-    @NotNull
+    @NonNull
     @Size(min = 1, max = 45)
     @Column(name = "titulo")
     private String titulo;
     @Basic(optional = false)
-    @NotNull
+    @NonNull
     @Size(min = 1, max = 255)
     @Column(name = "autor")
     private String autor;
