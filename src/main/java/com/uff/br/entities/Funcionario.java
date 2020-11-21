@@ -4,24 +4,23 @@ import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
+//import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+//import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import org.springframework.lang.NonNull;
-
+//import javax.persistence.Table;
+import com.sun.istack.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
-@Table(name = "funcionario")
+//@Table(name = "funcionario")
 @XmlRootElement
 @NamedQueries({
         @NamedQuery(name = "Funcionario.findAll", query = "SELECT f FROM Funcionario f")
@@ -33,19 +32,19 @@ public class Funcionario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id")
+    //@Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NonNull
-    @Size(min = 1, max = 45)
-    @Column(name = "matricula")
+    @NotNull
+    //@Size(min = 1, max = 45)
+    //@Column(name = "matricula")
     private String matricula;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFuncionario")
     private Collection<Noticia> noticiaCollection;
-    @JoinColumn(name = "id_pessoa", referencedColumnName = "id")
+    //@JoinColumn(name = "id_pessoa", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Pessoa idPessoa;
-    @JoinColumn(name = "id_funcionario", referencedColumnName = "id")
+    //@JoinColumn(name = "id_funcionario", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private TipoFuncionario idFuncionario;
 

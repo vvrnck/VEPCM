@@ -1,13 +1,12 @@
 package com.uff.br.entities;
 
 
-import org.springframework.lang.NonNull;
-
+import com.sun.istack.NotNull;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
+//import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,12 +14,12 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
+//import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
-@Table(name = "endereco")
+//@Table(name = "endereco")
 @XmlRootElement
 @NamedQueries({
         @NamedQuery(name = "Endereco.findAll", query = "SELECT e FROM Endereco e")
@@ -37,35 +36,35 @@ public class Endereco implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id")
+    //@Column(name = "id")
     private Integer id;
-    @Size(max = 45)
-    @Column(name = "logradouro")
+    //@Size(max = 45)
+    //@Column(name = "logradouro")
     private String logradouro;
     @Basic(optional = false)
-    @NonNull
-    @Size(min = 1, max = 45)
-    @Column(name = "numero")
+    @NotNull
+    //@Size(min = 1, max = 45)
+    //@Column(name = "numero")
     private String numero;
     @Basic(optional = false)
-    @NonNull
-    @Size(min = 1, max = 45)
-    @Column(name = "cep")
+    @NotNull
+    //@Size(min = 1, max = 45)
+    //@Column(name = "cep")
     private String cep;
     @Basic(optional = false)
-    @NonNull
-    @Size(min = 1, max = 45)
-    @Column(name = "uf")
+    @NotNull
+    //@Size(min = 1, max = 45)
+    //@Column(name = "uf")
     private String uf;
     @Basic(optional = false)
-    @NonNull
-    @Size(min = 1, max = 255)
-    @Column(name = "municipio")
+    @NotNull
+    //@Size(min = 1, max = 255)
+    //@Column(name = "municipio")
     private String municipio;
     @Basic(optional = false)
-    @NonNull
-    @Size(min = 1, max = 255)
-    @Column(name = "bairro")
+    @NotNull
+    //@Size(min = 1, max = 255)
+    //@Column(name = "bairro")
     private String bairro;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEndereco")
     private Collection<Pessoa> pessoaCollection;

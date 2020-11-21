@@ -1,31 +1,30 @@
 package com.uff.br.entities;
 
-
+import com.sun.istack.NotNull;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
+//import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+//import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
+//import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import org.springframework.lang.NonNull;
-
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+
 @Entity
-@Table(name = "pessoa")
+//@Table(name = "pessoa")
 @XmlRootElement
 @NamedQueries({
         @NamedQuery(name = "Pessoa.findAll", query = "SELECT p FROM Pessoa p")
@@ -43,37 +42,37 @@ public class Pessoa implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id")
+    //@Column(name = "id")
     private Integer id;
-    @Size(max = 45)
-    @Column(name = "identidade")
+    //@Size(max = 45)
+    //@Column(name = "identidade")
     private String identidade;
     @Basic(optional = false)
-    @NonNull
-    @Size(min = 1, max = 45)
-    @Column(name = "nome")
+    @NotNull
+    //@Size(min = 1, max = 45)
+    //@Column(name = "nome")
     private String nome;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="E-mail inválido")//if the field contains email address consider using this annotation to enforce field validation
     @Basic(optional = false)
-    @NonNull
-    @Size(min = 1, max = 255)
-    @Column(name = "email")
+    @NotNull
+    //@Size(min = 1, max = 255)
+    //@Column(name = "email")
     private String email;
-    @Size(max = 45)
-    @Column(name = "cpf")
+    //@Size(max = 45)
+    //@Column(name = "cpf")
     private String cpf;
-    @Size(max = 45)
-    @Column(name = "sexo")
+    //@Size(max = 45)
+    //@Column(name = "sexo")
     private String sexo;
-    @Size(max = 45)
-    @Column(name = "celular")
+    //@Size(max = 45)
+    //@Column(name = "celular")
     private String celular;
-    @Column(name = "dt_nasc")
+    //@Column(name = "dt_nasc")
     @Temporal(TemporalType.DATE)
     private Date dtNasc;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPessoa")
     private Collection<Aluno> alunoCollection;
-    @JoinColumn(name = "id_endereco", referencedColumnName = "id")
+    //@JoinColumn(name = "id_endereco", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Endereco idEndereco;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPessoa")
@@ -228,4 +227,5 @@ public class Pessoa implements Serializable {
     public String toString() {
         return "entity.Pessoa[ id=" + id + " ]";
     }
+
 }

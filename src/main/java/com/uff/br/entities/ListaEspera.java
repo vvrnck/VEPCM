@@ -3,24 +3,26 @@ package com.uff.br.entities;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.Column;
+//import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+//import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+//import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.sun.istack.NotNull;
 import org.springframework.lang.NonNull;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name = "lista_espera")
+//@Table(name = "lista_espera")
 @XmlRootElement
 @NamedQueries({
         @NamedQuery(name = "ListaEspera.findAll", query = "SELECT l FROM ListaEspera l")
@@ -32,14 +34,14 @@ public class ListaEspera implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id")
+    //@Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NonNull
-    @Column(name = "data")
+    @NotNull
+    //@Column(name = "data")
     @Temporal(TemporalType.DATE)
     private Date data;
-    @JoinColumn(name = "aluno_id", referencedColumnName = "id")
+    //@JoinColumn(name = "aluno_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Aluno alunoId;
 

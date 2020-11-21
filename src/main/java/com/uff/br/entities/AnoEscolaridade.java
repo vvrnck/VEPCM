@@ -1,24 +1,23 @@
 package com.uff.br.entities;
 
 
-import org.springframework.lang.NonNull;
-
+import com.sun.istack.NotNull;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
+//import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
+//import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
-@Table(name = "ano_escolaridade")
+//@Table(name = "ano_escolaridade")
 @XmlRootElement
 @NamedQueries({
         @NamedQuery(name = "AnoEscolaridade.findAll", query = "SELECT a FROM AnoEscolaridade a")
@@ -30,16 +29,16 @@ public class AnoEscolaridade implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NonNull
-    @Column(name = "id")
+    @NotNull
+    //@Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NonNull
-    @Size(min = 1, max = 45)
-    @Column(name = "nome")
+    @NotNull
+    //@Size(min = 1, max = 45)
+    //@Column(name = "nome")
     private String nome;
-    @Size(max = 255)
-    @Column(name = "descricao")
+    //@Size(max = 255)
+    //@Column(name = "descricao")
     private String descricao;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idAnoEscolaridade")
     private Collection<UnidadeEscolar> unidadeEscolarCollection;

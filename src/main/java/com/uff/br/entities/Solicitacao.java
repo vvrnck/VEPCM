@@ -1,8 +1,6 @@
 package com.uff.br.entities;
 
 import com.sun.istack.NotNull;
-import org.springframework.lang.NonNull;
-
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -22,7 +20,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 
 @Entity
-@Table(name ="solicitacao")
+//@Table(name ="solicitacao")
 @XmlRootElement
 @NamedQueries({
         @NamedQuery(name = "Solicitacao.findAll", query = "SELECT s FROM Solicitacao s")
@@ -33,23 +31,23 @@ public class Solicitacao implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NonNull
-    @Column(name = "id")
+    @NotNull
+    //@Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NonNull
-    @Size(min = 1, max = 45)
-    @Column(name = "protocolo")
+    @NotNull
+    //@Size(min = 1, max = 45)
+    //@Column(name = "protocolo")
     private String protocolo;
-    @JoinColumn(name = "id_aluno", referencedColumnName = "id")
+    //@JoinColumn(name = "id_aluno", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Aluno idAluno;
-    @JoinColumn(name = "id_responsavel", referencedColumnName = "id")
+    //@JoinColumn(name = "id_responsavel", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Responsavel idResponsavel;
-    @JoinColumns({
-            @JoinColumn(name = "id_unidade_escolar", referencedColumnName = "unidade_escolar_id")
-            , @JoinColumn(name = "id_ano_escolaridade", referencedColumnName = "ano_escolaridade_id")})
+    //@JoinColumns({
+    //        @JoinColumn(name = "id_unidade_escolar", referencedColumnName = "unidade_escolar_id")
+    //        , @JoinColumn(name = "id_ano_escolaridade", referencedColumnName = "ano_escolaridade_id")})
     @ManyToOne(optional = false)
     private UnidadeEscolarHasAnoEscolaridade unidadeEscolarHasAnoEscolaridade;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "solicitacao")

@@ -1,26 +1,25 @@
 package com.uff.br.entities;
 
 
-import org.springframework.lang.NonNull;
-
+import com.sun.istack.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.Column;
+//import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+//import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+//import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name = "fale_conosco")
+//@Table(name = "fale_conosco")
 @XmlRootElement
 @NamedQueries({
         @NamedQuery(name = "FaleConosco.findAll", query = "SELECT f FROM FaleConosco f")
@@ -32,26 +31,26 @@ public class FaleConosco implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NonNull
-    @Column(name = "id")
+    @NotNull
+    //@Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NonNull
-    @Column(name = "data")
+    @NotNull
+    //@Column(name = "data")
     @Temporal(TemporalType.DATE)
     private Date data;
     @Basic(optional = false)
-    @NonNull
-    @Size(min = 1, max = 45)
-    @Column(name = "assunto")
+    @NotNull
+    //@Size(min = 1, max = 45)
+    //@Column(name = "assunto")
     private String assunto;
     @Basic(optional = false)
-    @NonNull
+    @NotNull
     @Lob
-    @Size(min = 1, max = 2147483647)
-    @Column(name = "texto")
+    //@Size(min = 1, max = 2147483647)
+    //@Column(name = "texto")
     private String texto;
-    @JoinColumn(name = "id_pessoa", referencedColumnName = "id")
+    //@JoinColumn(name = "id_pessoa", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Pessoa idPessoa;
 

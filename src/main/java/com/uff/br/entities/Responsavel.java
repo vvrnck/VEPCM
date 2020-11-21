@@ -1,26 +1,25 @@
 package com.uff.br.entities;
 
-
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
+//import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+//import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
+//import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
-@Table(name = "responsavel")
+//@Table(name = "responsavel")
 @XmlRootElement
 @NamedQueries({
         @NamedQuery(name = "Responsavel.findAll", query = "SELECT r FROM Responsavel r")
@@ -31,7 +30,7 @@ public class Responsavel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id")
+    //@Column(name = "id")
     private Integer id;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idResponsavel")
     private Collection<Aluno> alunoCollection;
@@ -39,7 +38,7 @@ public class Responsavel implements Serializable {
     private Collection<Solicitacao> solicitacaoCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "responsavel")
     private Collection<SolicitacaoHasResponsavel> solicitacaoHasResponsavelCollection;
-    @JoinColumn(name = "id_pessoa", referencedColumnName = "id")
+    //@JoinColumn(name = "id_pessoa", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Pessoa idPessoa;
 

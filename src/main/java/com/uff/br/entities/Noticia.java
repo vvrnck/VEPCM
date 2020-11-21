@@ -4,25 +4,26 @@ package com.uff.br.entities;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.Column;
+//import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+//import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+//import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import org.springframework.lang.NonNull;
+
+import com.sun.istack.NotNull;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name = "noticia")
+//@Table(name = "noticia")
 @XmlRootElement
 @NamedQueries({
         @NamedQuery(name = "Noticia.findAll", query = "SELECT n FROM Noticia n")
@@ -36,30 +37,30 @@ public class Noticia implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id")
+    //@Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NonNull
-    @Column(name = "ano")
+    @NotNull
+    //@Column(name = "ano")
     @Temporal(TemporalType.DATE)
     private Date ano;
     @Basic(optional = false)
-    @NonNull
+    @NotNull
     @Lob
-    @Size(min = 1, max = 2147483647)
-    @Column(name = "conteudo")
+    //@Size(min = 1, max = 2147483647)
+    //@Column(name = "conteudo")
     private String conteudo;
     @Basic(optional = false)
-    @NonNull
-    @Size(min = 1, max = 45)
-    @Column(name = "titulo")
+    @NotNull
+    //@Size(min = 1, max = 45)
+    //@Column(name = "titulo")
     private String titulo;
     @Basic(optional = false)
-    @NonNull
-    @Size(min = 1, max = 255)
-    @Column(name = "autor")
+    @NotNull
+    //@Size(min = 1, max = 255)
+    //@Column(name = "autor")
     private String autor;
-    @JoinColumn(name = "id_funcionario", referencedColumnName = "id")
+    //@JoinColumn(name = "id_funcionario", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Funcionario idFuncionario;
 
