@@ -17,9 +17,18 @@ public class PessoaService {
         this.pessoaRepository = pessoaRepository;
     }
 
-    public Pessoa salvar(Pessoa pessoa) {
-        return pessoaRepository.save(pessoa);
-    }
+   /* public Pessoa salvar(Pessoa pessoa) {
+        Pessoa p = new Pessoa();
+        p.setSexo(pessoa.getSexo());
+        p.setCelular(pessoa.getCelular());
+        p.setCpf(pessoa.getCpf());
+        p.setDtNasc(pessoa.getDtNasc());
+        p.setEmail(pessoa.getEmail());
+        p.setEndereco(pessoa.getEndereco());
+        p.setIdentidade(pessoa.getIdentidade());
+        p.setNome(pessoa.getNome());
+        return pessoaRepository.save(p);
+    }*/
 
     public Iterable<Pessoa> getAll() { return pessoaRepository.findAll(); }
 

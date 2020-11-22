@@ -20,12 +20,15 @@ public class PessoaController {
     public PessoaController(PessoaService pessoaService) {
         this.pessoaService = pessoaService;
     }
+/*
 
     @PostMapping(path="") // Map ONLY POST Requests
     public ResponseEntity<PessoaRespostaDTO> addNewPerson (@RequestBody PessoaDTO dto) {
         Pessoa p = pessoaService.salvar(dto.convertToObject());
+
         return new ResponseEntity<>(PessoaRespostaDTO.convertToDTO(p), HttpStatus.CREATED);
     }
+*/
 
     @GetMapping(path="")
     public Iterable<Pessoa> findAll () {
