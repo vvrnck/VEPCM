@@ -1,18 +1,11 @@
 package com.uff.br.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
-@NamedQueries({
-        @NamedQuery(name = "Pessoa.findAll", query = "SELECT p FROM Pessoa p")
-        , @NamedQuery(name = "Pessoa.findById", query = "SELECT p FROM Pessoa p WHERE p.id = :id")
-        , @NamedQuery(name = "Pessoa.findByIdentidade", query = "SELECT p FROM Pessoa p WHERE p.identidade = :identidade")
-        , @NamedQuery(name = "Pessoa.findByNome", query = "SELECT p FROM Pessoa p WHERE p.nome = :nome")
-        , @NamedQuery(name = "Pessoa.findByEmail", query = "SELECT p FROM Pessoa p WHERE p.email = :email")
-        , @NamedQuery(name = "Pessoa.findByCpf", query = "SELECT p FROM Pessoa p WHERE p.cpf = :cpf")
-        , @NamedQuery(name = "Pessoa.findBySexo", query = "SELECT p FROM Pessoa p WHERE p.sexo = :sexo")
-        , @NamedQuery(name = "Pessoa.findByCelular", query = "SELECT p FROM Pessoa p WHERE p.celular = :celular")
-        , @NamedQuery(name = "Pessoa.findByDtNasc", query = "SELECT p FROM Pessoa p WHERE p.dtNasc = :dtNasc")})
 public class Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,9 +16,6 @@ public class Pessoa {
 
     @Column(name = "nome")
     private String nome;
-
-    @Column(name = "email")
-    private String email;
 
     @Column(name = "cpf")
     private String cpf;
@@ -39,21 +29,27 @@ public class Pessoa {
     @Column(name = "dtNasc")
     private String dtNasc;
 
+    @JsonManagedReference
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "endereco", referencedColumnName = "id")
     private Endereco endereco;
 
+    @JsonBackReference
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "pessoa")
+    private Usuario usuario;
+
     public Pessoa() {}
 
-    public Pessoa(String nome, String email, String identidade, String cpf, String sexo, String celular, String dtNasc, Endereco endereco) {
+    public Pessoa(String nome, String identidade, String cpf, String sexo, String celular, String dtNasc, Endereco endereco, Usuario usuario) {
         this.nome = nome;
-        this.email = email;
+        //this.email = email;
         this.identidade = identidade;
         this.cpf = cpf;
         this.sexo = sexo;
         this.celular = celular;
         this.dtNasc = dtNasc;
         this.endereco = endereco;
+        this.usuario = usuario;
     }
 
 
@@ -89,14 +85,6 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getCpf() {
         return cpf;
     }
@@ -127,5 +115,13 @@ public class Pessoa {
 
     public void setDtNasc(String dtNasc) {
         this.dtNasc = dtNasc;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

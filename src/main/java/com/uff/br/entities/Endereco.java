@@ -1,19 +1,10 @@
 package com.uff.br.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 
 @Entity
-@NamedQueries({
-        @NamedQuery(name = "Endereco.findAll", query = "SELECT e FROM Endereco e")
-        , @NamedQuery(name = "Endereco.findById", query = "SELECT e FROM Endereco e WHERE e.id = :id")
-        , @NamedQuery(name = "Endereco.findByLogradouro", query = "SELECT e FROM Endereco e WHERE e.logradouro = :logradouro")
-        , @NamedQuery(name = "Endereco.findByNumero", query = "SELECT e FROM Endereco e WHERE e.numero = :numero")
-        , @NamedQuery(name = "Endereco.findByCep", query = "SELECT e FROM Endereco e WHERE e.cep = :cep")
-        , @NamedQuery(name = "Endereco.findByUf", query = "SELECT e FROM Endereco e WHERE e.uf = :uf")
-        , @NamedQuery(name = "Endereco.findByMunicipio", query = "SELECT e FROM Endereco e WHERE e.municipio = :municipio")
-        , @NamedQuery(name = "Endereco.findByBairro", query = "SELECT e FROM Endereco e WHERE e.bairro = :bairro")})
 public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,7 +28,7 @@ public class Endereco {
     @Column(name = "bairro")
     private String bairro;
 
-    @JsonIgnore
+    @JsonBackReference
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "endereco")
     private Pessoa pessoa;
 

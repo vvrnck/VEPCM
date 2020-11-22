@@ -7,12 +7,13 @@ import com.uff.br.services.PessoaService;
 import com.uff.br.utils.RequestStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
 @RestController // This means that this class is a Controller
-@RequestMapping(path="/pessoa") // This means URL's start with /demo (after Application path)
+@RequestMapping(path="/pessoa", produces = MediaType.APPLICATION_JSON_VALUE) // This means URL's start with /demo (after Application path)
 public class PessoaController {
     private final PessoaService pessoaService;
 
@@ -20,23 +21,32 @@ public class PessoaController {
     public PessoaController(PessoaService pessoaService) {
         this.pessoaService = pessoaService;
     }
-/*
+
 
     @PostMapping(path="") // Map ONLY POST Requests
     public ResponseEntity<PessoaRespostaDTO> addNewPerson (@RequestBody PessoaDTO dto) {
         Pessoa p = pessoaService.salvar(dto.convertToObject());
-
         return new ResponseEntity<>(PessoaRespostaDTO.convertToDTO(p), HttpStatus.CREATED);
     }
-*/
 
     @GetMapping(path="")
-    public Iterable<Pessoa> findAll () {
+    public RequestStatus findAll () {
         return pessoaService.getAll();
+    }
+
+    @GetMapping(path="/{id}")
+    public RequestStatus findById (@PathVariable int id) {
+        return pessoaService.getById(id);
     }
 
     @DeleteMapping(path="/{id}")
     public RequestStatus removePerson (@PathVariable int id) {
         return pessoaService.removePessoa(id);
+    }
+
+    @PutMapping(path="/{id}")
+    public ResponseEntity<PessoaRespostaDTO> updatePerson(@PathVariable int id, @RequestBody PessoaDTO dto) {
+        Pessoa p = pessoaService.atualizaPessoa(id, dto.convertToObject());
+        return new ResponseEntity<>(PessoaRespostaDTO.convertToDTO(p), HttpStatus.OK);
     }
 }
