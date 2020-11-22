@@ -1,31 +1,8 @@
 package com.uff.br.entities;
 
-import com.sun.istack.NotNull;
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.Date;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-//import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-//import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-//import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-
+import javax.persistence.*;
 
 @Entity
-//@Table(name = "pessoa")
-@XmlRootElement
 @NamedQueries({
         @NamedQuery(name = "Pessoa.findAll", query = "SELECT p FROM Pessoa p")
         , @NamedQuery(name = "Pessoa.findById", query = "SELECT p FROM Pessoa p WHERE p.id = :id")
@@ -36,71 +13,64 @@ import javax.xml.bind.annotation.XmlTransient;
         , @NamedQuery(name = "Pessoa.findBySexo", query = "SELECT p FROM Pessoa p WHERE p.sexo = :sexo")
         , @NamedQuery(name = "Pessoa.findByCelular", query = "SELECT p FROM Pessoa p WHERE p.celular = :celular")
         , @NamedQuery(name = "Pessoa.findByDtNasc", query = "SELECT p FROM Pessoa p WHERE p.dtNasc = :dtNasc")})
-public class Pessoa implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    //@Column(name = "id")
-    private Integer id;
-    //@Size(max = 45)
-    //@Column(name = "identidade")
+    private int id;
+
+    @Column(name = "identidade")
     private String identidade;
-    @Basic(optional = false)
-    @NotNull
-    //@Size(min = 1, max = 45)
-    //@Column(name = "nome")
+
+    @Column(name = "nome")
     private String nome;
-    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="E-mail inválido")//if the field contains email address consider using this annotation to enforce field validation
-    @Basic(optional = false)
-    @NotNull
-    //@Size(min = 1, max = 255)
-    //@Column(name = "email")
+
+    @Column(name = "email")
     private String email;
-    //@Size(max = 45)
-    //@Column(name = "cpf")
+
+    @Column(name = "cpf")
     private String cpf;
-    //@Size(max = 45)
-    //@Column(name = "sexo")
+
+    @Column(name = "sexo")
     private String sexo;
-    //@Size(max = 45)
-    //@Column(name = "celular")
+
+    @Column(name = "celular")
     private String celular;
-    //@Column(name = "dt_nasc")
-    @Temporal(TemporalType.DATE)
-    private Date dtNasc;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPessoa")
-    private Collection<Aluno> alunoCollection;
-    //@JoinColumn(name = "id_endereco", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Endereco idEndereco;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPessoa")
-    private Collection<FaleConosco> faleConoscoCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPessoa")
-    private Collection<Funcionario> funcionarioCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPessoa")
-    private Collection<Responsavel> responsavelCollection;
 
-    public Pessoa() {
-    }
+    @Column(name = "dtNasc")
+    private String dtNasc;
 
-    public Pessoa(Integer id) {
-        this.id = id;
-    }
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "endereco", referencedColumnName = "id")
+    private Endereco endereco;
 
-    public Pessoa(Integer id, String nome, String email) {
-        this.id = id;
+    public Pessoa() {}
+
+    public Pessoa(String nome, String email, String identidade, String cpf, String sexo, String celular, String dtNasc, Endereco endereco) {
         this.nome = nome;
         this.email = email;
+        this.identidade = identidade;
+        this.cpf = cpf;
+        this.sexo = sexo;
+        this.celular = celular;
+        this.dtNasc = dtNasc;
+        this.endereco = endereco;
     }
 
-    public Integer getId() {
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     public String getIdentidade() {
@@ -151,81 +121,11 @@ public class Pessoa implements Serializable {
         this.celular = celular;
     }
 
-    public Date getDtNasc() {
+    public String getDtNasc() {
         return dtNasc;
     }
 
-    public void setDtNasc(Date dtNasc) {
+    public void setDtNasc(String dtNasc) {
         this.dtNasc = dtNasc;
     }
-
-    @XmlTransient
-    public Collection<Aluno> getAlunoCollection() {
-        return alunoCollection;
-    }
-
-    public void setAlunoCollection(Collection<Aluno> alunoCollection) {
-        this.alunoCollection = alunoCollection;
-    }
-
-    public Endereco getIdEndereco() {
-        return idEndereco;
-    }
-
-    public void setIdEndereco(Endereco idEndereco) {
-        this.idEndereco = idEndereco;
-    }
-
-    @XmlTransient
-    public Collection<FaleConosco> getFaleConoscoCollection() {
-        return faleConoscoCollection;
-    }
-
-    public void setFaleConoscoCollection(Collection<FaleConosco> faleConoscoCollection) {
-        this.faleConoscoCollection = faleConoscoCollection;
-    }
-
-    @XmlTransient
-    public Collection<Funcionario> getFuncionarioCollection() {
-        return funcionarioCollection;
-    }
-
-    public void setFuncionarioCollection(Collection<Funcionario> funcionarioCollection) {
-        this.funcionarioCollection = funcionarioCollection;
-    }
-
-    @XmlTransient
-    public Collection<Responsavel> getResponsavelCollection() {
-        return responsavelCollection;
-    }
-
-    public void setResponsavelCollection(Collection<Responsavel> responsavelCollection) {
-        this.responsavelCollection = responsavelCollection;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Pessoa)) {
-            return false;
-        }
-        Pessoa other = (Pessoa) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "entity.Pessoa[ id=" + id + " ]";
-    }
-
 }
