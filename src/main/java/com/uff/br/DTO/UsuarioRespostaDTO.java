@@ -1,38 +1,27 @@
-package com.uff.br.entities;
+package com.uff.br.DTO;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.uff.br.entities.Endereco;
+import com.uff.br.entities.Pessoa;
+import com.uff.br.entities.Usuario;
 import com.uff.br.utils.TipoUsuario;
 
-import javax.persistence.*;
-
-@Entity
-public class Usuario {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class UsuarioRespostaDTO {
     private int id;
-
-    @Column(name = "email")
     private String email;
-
-    @Column(name = "senha")
     private String senha;
-
     private TipoUsuario tipoUsuario;
-
-    @JsonManagedReference
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "pessoa", referencedColumnName = "id")
     private Pessoa pessoa;
 
-
-
-    public Usuario() {}
-
-    public Usuario(String email, String senha, TipoUsuario tipoUsuario, Pessoa pessoa) {
+    private UsuarioRespostaDTO(int id, String email, String senha, TipoUsuario tipoUsuario, Pessoa pessoa){
+        this.id = id;
         this.email = email;
         this.senha = senha;
         this.pessoa = pessoa;
         this.tipoUsuario = tipoUsuario;
+    }
+
+    public static UsuarioRespostaDTO convertToDTO(Usuario u) {
+        return new UsuarioRespostaDTO(u.getId(), u.getEmail(), u.getSenha(), u.getTipoUsuario(), u.getPessoa());
     }
 
     public int getId() {

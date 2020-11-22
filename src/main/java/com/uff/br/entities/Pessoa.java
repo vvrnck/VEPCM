@@ -1,20 +1,16 @@
 package com.uff.br.entities;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 public class Pessoa {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    //    //@OneToMany(cascade = CascadeType.ALL)
-//    @Column(name = "endereco")
-//    private Endereco endereco;
-
-    /*@OneToOne(optional = false, mappedBy = "pessoa")
-    private Usuario usuario;*/
 
     @Column(name = "identidade")
     private String identidade;
@@ -34,12 +30,52 @@ public class Pessoa {
     @Column(name = "dtNasc")
     private String dtNasc;
 
+    @JsonManagedReference(value = "endereco-pessoa")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "endereco", referencedColumnName = "id")
+    private Endereco endereco;
+
+    @JsonBackReference
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "pessoa")
+    private Usuario usuario;
+
+//    private Collection<Aluno> alunos;
+//
+//    private Collection<FaleConosco> faleConosco;
+//
+//    private Collection<Funcionario> funcionarios;
+
+
+
+    public Pessoa() {}
+
+    public Pessoa(String nome, String identidade, String cpf, String sexo, String celular, String dtNasc, Endereco endereco, Usuario usuario) {
+        this.nome = nome;
+        //this.email = email;
+        this.identidade = identidade;
+        this.cpf = cpf;
+        this.sexo = sexo;
+        this.celular = celular;
+        this.dtNasc = dtNasc;
+        this.endereco = endereco;
+        this.usuario = usuario;
+    }
+
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     public String getIdentidade() {
@@ -90,14 +126,11 @@ public class Pessoa {
         this.dtNasc = dtNasc;
     }
 
-    /*public Usuario getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-
     }
-
-     */
 }
