@@ -1,6 +1,7 @@
 package com.uff.br.entities;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.uff.br.utils.TipoUsuario;
 
 import javax.persistence.*;
 
@@ -16,18 +17,22 @@ public class Usuario {
     @Column(name = "senha")
     private String senha;
 
+    private TipoUsuario tipoUsuario;
+
     @JsonManagedReference
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "pessoa", referencedColumnName = "id")
     private Pessoa pessoa;
 
 
+
     public Usuario() {}
 
-    public Usuario(String email, String senha, Pessoa pessoa) {
+    public Usuario(String email, String senha, TipoUsuario tipoUsuario, Pessoa pessoa) {
         this.email = email;
         this.senha = senha;
         this.pessoa = pessoa;
+        this.tipoUsuario = tipoUsuario;
     }
 
     public int getId() {
@@ -62,5 +67,11 @@ public class Usuario {
         this.pessoa = pessoa;
     }
 
+    public TipoUsuario getTipoUsuario() {
+        return tipoUsuario;
+    }
 
+    public void setTipoUsuario(TipoUsuario tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
 }

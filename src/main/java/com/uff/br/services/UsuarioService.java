@@ -43,6 +43,7 @@ public class UsuarioService {
             u.get().setEmail(usuario.getEmail());
             u.get().setSenha(usuario.getSenha());
             u.get().setPessoa(usuario.getPessoa());
+            u.get().setTipoUsuario(usuario.getTipoUsuario());
         }
         return usuarioRepository.save(u.get());
     }

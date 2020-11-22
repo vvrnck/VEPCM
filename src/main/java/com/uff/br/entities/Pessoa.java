@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 public class Pessoa {
@@ -29,7 +30,7 @@ public class Pessoa {
     @Column(name = "dtNasc")
     private String dtNasc;
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "endereco-pessoa")
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "endereco", referencedColumnName = "id")
     private Endereco endereco;
@@ -37,6 +38,14 @@ public class Pessoa {
     @JsonBackReference
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "pessoa")
     private Usuario usuario;
+
+//    private Collection<Aluno> alunos;
+//
+//    private Collection<FaleConosco> faleConosco;
+//
+//    private Collection<Funcionario> funcionarios;
+
+
 
     public Pessoa() {}
 

@@ -28,9 +28,13 @@ public class Endereco {
     @Column(name = "bairro")
     private String bairro;
 
-    @JsonBackReference
+    @JsonBackReference(value = "endereco-pessoa")
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "endereco")
     private Pessoa pessoa;
+
+    @JsonBackReference(value = "endereco-unidade")
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "endereco")
+    private UnidadeEscolar unidadeEscolar;
 
     public Endereco() {}
 
@@ -105,5 +109,22 @@ public class Endereco {
 
     public void setPessoa(Pessoa pessoa) {
         this.pessoa = pessoa;
+    }
+//
+//    public UnidadeEscolar getUnidadeEscolar() {
+//        return unidadeEscolar;
+//    }
+//
+//    public void setUnidadeEscolar(UnidadeEscolar unidadeEscolar) {
+//        this.unidadeEscolar = unidadeEscolar;
+//    }
+
+
+    public UnidadeEscolar getUnidadeEscolar() {
+        return unidadeEscolar;
+    }
+
+    public void setUnidadeEscolar(UnidadeEscolar unidadeEscolar) {
+        this.unidadeEscolar = unidadeEscolar;
     }
 }
