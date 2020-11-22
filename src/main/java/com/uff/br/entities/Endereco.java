@@ -43,6 +43,15 @@ public class Endereco {
 
     public Endereco() {}
 
+    public Endereco(String logradouro, String numero, String cep, String uf, String municipio, String bairro) {
+        this.logradouro = logradouro;
+        this.numero = numero;
+        this.cep = cep;
+        this.uf = uf;
+        this.municipio = municipio;
+        this.bairro = bairro;
+    }
+
     public int getId() {
         return id;
     }

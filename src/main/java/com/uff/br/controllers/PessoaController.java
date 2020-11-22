@@ -4,6 +4,7 @@ import com.uff.br.DTO.PessoaDTO;
 import com.uff.br.DTO.PessoaRespostaDTO;
 import com.uff.br.entities.Pessoa;
 import com.uff.br.services.PessoaService;
+import com.uff.br.utils.RequestStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,4 +32,8 @@ public class PessoaController {
         return pessoaService.getAll();
     }
 
+    @DeleteMapping(path="/{id}")
+    public RequestStatus removePerson (@PathVariable int id) {
+        return pessoaService.removePessoa(id);
+    }
 }
