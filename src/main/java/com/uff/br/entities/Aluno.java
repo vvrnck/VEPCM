@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Set;
 
 @Entity
 public class Aluno {
@@ -31,8 +32,8 @@ public class Aluno {
     @ManyToOne(cascade = CascadeType.ALL)
     private Pessoa idResponsavel;
 
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "aluno")
-//    private Collection<ListaEspera> listaEsperaCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "aluno")
+    private Set<ListaEspera> listaEspera;
 //
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "aluno")
 //    private Collection<Solicitacao> solicitacaoCollection;
@@ -41,12 +42,13 @@ public class Aluno {
 
     public Aluno() {    }
 
-    public Aluno(String naturalidade, String nomeMae, String nomePai, Pessoa idPessoa, Pessoa idResponsavel) {
+    public Aluno(String naturalidade, String nomeMae, String nomePai, Pessoa idPessoa, Pessoa idResponsavel, Set<ListaEspera> listaEspera) {
         this.naturalidade = naturalidade;
         this.nomeMae = nomeMae;
         this.nomePai = nomePai;
         this.idPessoa = idPessoa;
         this.idResponsavel = idResponsavel;
+        this.listaEspera = listaEspera;
     }
 
     public int getId() {
@@ -97,4 +99,11 @@ public class Aluno {
         this.idResponsavel = idResponsavel;
     }
 
+    public Set<ListaEspera> getListaEspera() {
+        return listaEspera;
+    }
+
+    public void setListaEspera(Set<ListaEspera> listaEspera) {
+        this.listaEspera = listaEspera;
+    }
 }

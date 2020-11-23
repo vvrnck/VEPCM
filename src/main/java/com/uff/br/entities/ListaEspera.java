@@ -1,8 +1,8 @@
-/*
 package com.uff.br.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class ListaEspera {
@@ -15,20 +15,16 @@ public class ListaEspera {
     @Column(name = "data")
     private String data;
 
-    @JoinColumn(name = "idAluno", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Aluno idAluno;
+    @JoinColumn(name = "aluno", referencedColumnName = "id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Aluno aluno;
 
     public ListaEspera() {
     }
 
-    public ListaEspera(Integer id) {
-        this.id = id;
-    }
-
-    public ListaEspera(Integer id, Date data) {
-        this.id = id;
+    public ListaEspera(String data, Aluno aluno) {
         this.data = data;
+        this.aluno = aluno;
     }
 
     public Integer getId() {
@@ -39,20 +35,19 @@ public class ListaEspera {
         this.id = id;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
-    public Aluno getAlunoId() {
-        return alunoId;
+    public Aluno getIdAluno() {
+        return aluno;
     }
 
-    public void setAlunoId(Aluno alunoId) {
-        this.alunoId = alunoId;
+    public void setIdAluno(Aluno idAluno) {
+        this.aluno = idAluno;
     }
 }
-*/

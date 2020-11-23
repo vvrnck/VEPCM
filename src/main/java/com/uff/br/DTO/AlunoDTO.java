@@ -2,7 +2,10 @@ package com.uff.br.DTO;
 
 
 import com.uff.br.entities.Aluno;
+import com.uff.br.entities.ListaEspera;
 import com.uff.br.entities.Pessoa;
+
+import java.util.Set;
 
 
 public class AlunoDTO {
@@ -11,9 +14,10 @@ public class AlunoDTO {
     private String nomePai;
     private Pessoa idPessoa;
     private Pessoa idResponsavel;
+    private Set<ListaEspera> listaEspera;
 
     public Aluno convertToObject() {
-        return new Aluno (naturalidade, nomeMae, nomePai, idPessoa, idResponsavel);
+        return new Aluno (naturalidade, nomeMae, nomePai, idPessoa, idResponsavel, listaEspera);
     }
     public String getNaturalidade() {
         return naturalidade;
@@ -53,5 +57,13 @@ public class AlunoDTO {
 
     public void setIdResponsavel(Pessoa idResponsavel) {
         this.idResponsavel = idResponsavel;
+    }
+
+    public Set<ListaEspera> getListaEspera() {
+        return listaEspera;
+    }
+
+    public void setListaEspera(Set<ListaEspera> listaEspera) {
+        this.listaEspera = listaEspera;
     }
 }

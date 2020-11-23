@@ -1,7 +1,10 @@
 package com.uff.br.DTO;
 
 import com.uff.br.entities.Aluno;
+import com.uff.br.entities.ListaEspera;
 import com.uff.br.entities.Pessoa;
+
+import java.util.Set;
 
 public class AlunoRespostaDTO {
     private int id;
@@ -10,20 +13,22 @@ public class AlunoRespostaDTO {
     private String nomePai;
     private Pessoa idPessoa;
     private Pessoa idResponsavel;
+    private Set<ListaEspera> listaEspera;
 
 
-    private AlunoRespostaDTO(int id, String naturalidade, String nomeMae, String nomePai, Pessoa idPessoa, Pessoa idResponsavel){
+    private AlunoRespostaDTO(int id, String naturalidade, String nomeMae, String nomePai, Pessoa idPessoa, Pessoa idResponsavel, Set<ListaEspera> listaEspera){
         this.id = id;
         this.naturalidade = naturalidade;
         this.nomeMae = nomeMae;
         this.nomePai = nomePai;
         this.idPessoa= idPessoa;
         this.idResponsavel = idResponsavel;
+        this.listaEspera = listaEspera;
 
     }
 
     public static AlunoRespostaDTO convertToDTO(Aluno aluno) {
-        return new AlunoRespostaDTO(aluno.getId(), aluno.getNaturalidade(), aluno.getNomeMae(), aluno.getNomePai(), aluno.getIdPessoa(), aluno.getIdResponsavel());
+        return new AlunoRespostaDTO(aluno.getId(), aluno.getNaturalidade(), aluno.getNomeMae(), aluno.getNomePai(), aluno.getIdPessoa(), aluno.getIdResponsavel(), aluno.getListaEspera());
     }
 
 
@@ -73,5 +78,13 @@ public class AlunoRespostaDTO {
 
     public void setIdResponsavel(Pessoa idResponsavel) {
         this.idResponsavel = idResponsavel;
+    }
+
+    public Set<ListaEspera> getListaEspera() {
+        return listaEspera;
+    }
+
+    public void setListaEspera(Set<ListaEspera> listaEspera) {
+        this.listaEspera = listaEspera;
     }
 }

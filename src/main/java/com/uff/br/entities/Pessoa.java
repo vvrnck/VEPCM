@@ -44,15 +44,10 @@ public class Pessoa {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPessoa")
     private Set<Aluno> alunos;
 
-
-
-
 //
 //    private Collection<FaleConosco> faleConosco;
 //
 //    private Collection<Funcionario> funcionarios;
-
-
 
     public Pessoa() {}
 

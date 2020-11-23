@@ -2,7 +2,6 @@ package com.uff.br.DTO;
 
 import com.uff.br.entities.*;
 
-import java.util.Collection;
 import java.util.Set;
 
 public class UnidadeEscolarRespostaDTO {
