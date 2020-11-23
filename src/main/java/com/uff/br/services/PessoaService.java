@@ -32,7 +32,7 @@ public class PessoaService {
 
     public RequestStatus removePessoa (int id) {
         pessoaRepository.deleteById(id);
-        return new RequestStatus(HttpStatus.OK.value(), "Usuário removido com sucesso!");
+        return new RequestStatus(HttpStatus.OK.value(), "Pessoa removida com sucesso!");
     }
 
     public Pessoa atualizaPessoa (int id, Pessoa pessoa) {
@@ -47,6 +47,7 @@ public class PessoaService {
             p.get().setIdentidade(pessoa.getIdentidade());
             p.get().setNome(pessoa.getNome());
             p.get().setUsuario(pessoa.getUsuario());
+            p.get().setAlunos(pessoa.getAlunos());
         }
         return pessoaRepository.save(p.get());
     }

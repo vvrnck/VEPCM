@@ -1,53 +1,31 @@
-package com.uff.br.entities;
+package com.uff.br.DTO;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.uff.br.entities.Aluno;
+import com.uff.br.entities.Pessoa;
 
-import javax.persistence.*;
-import java.util.Collection;
-
-@Entity
-public class Aluno {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class AlunoRespostaDTO {
     private int id;
-
-    @Column(name = "naturalidade")
     private String naturalidade;
-
-    @Column(name = "nomeMae")
     private String nomeMae;
-
-    @Column(name = "nomePai")
     private String nomePai;
-
-    @JsonBackReference(value = "aluno-pessoa")
-    @JoinColumn(name = "idPessoa", referencedColumnName = "id")
-    @ManyToOne(cascade = CascadeType.ALL)
     private Pessoa idPessoa;
-
-
-    @JoinColumn(name = "idResponsavel", referencedColumnName = "id")
-    @ManyToOne(cascade = CascadeType.ALL)
     private Pessoa idResponsavel;
 
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "aluno")
-//    private Collection<ListaEspera> listaEsperaCollection;
-//
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "aluno")
-//    private Collection<Solicitacao> solicitacaoCollection;
-//
 
-
-    public Aluno() {    }
-
-    public Aluno(String naturalidade, String nomeMae, String nomePai, Pessoa idPessoa, Pessoa idResponsavel) {
+    private AlunoRespostaDTO(int id, String naturalidade, String nomeMae, String nomePai, Pessoa idPessoa, Pessoa idResponsavel){
+        this.id = id;
         this.naturalidade = naturalidade;
         this.nomeMae = nomeMae;
         this.nomePai = nomePai;
-        this.idPessoa = idPessoa;
+        this.idPessoa= idPessoa;
         this.idResponsavel = idResponsavel;
+
     }
+
+    public static AlunoRespostaDTO convertToDTO(Aluno aluno) {
+        return new AlunoRespostaDTO(aluno.getId(), aluno.getNaturalidade(), aluno.getNomeMae(), aluno.getNomePai(), aluno.getIdPessoa(), aluno.getIdResponsavel());
+    }
+
 
     public int getId() {
         return id;
@@ -96,5 +74,4 @@ public class Aluno {
     public void setIdResponsavel(Pessoa idResponsavel) {
         this.idResponsavel = idResponsavel;
     }
-
 }

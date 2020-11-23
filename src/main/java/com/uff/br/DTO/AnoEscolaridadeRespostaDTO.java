@@ -1,31 +1,25 @@
-package com.uff.br.entities;
+package com.uff.br.DTO;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import javax.persistence.*;
+import com.uff.br.entities.*;
+
 import java.util.Set;
 
-@Entity
-public class AnoEscolaridade {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class AnoEscolaridadeRespostaDTO {
     private int id;
-
-    @Column(name = "nome")
     private String nome;
-
-    @Column(name = "descricao")
     private String descricao;
-
-    @JsonIgnore
-    @ManyToMany(mappedBy = "anoEscolaridade")
     private Set<UnidadeEscolar> unidadeEscolar;
 
-    public AnoEscolaridade() {}
 
-    public AnoEscolaridade(String nome, String descricao, Set<UnidadeEscolar> unidadeEscolar) {
+    private AnoEscolaridadeRespostaDTO(int id, String nome, String descricao, Set<UnidadeEscolar> unidadeEscolar){
+        this.id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.unidadeEscolar = unidadeEscolar;
+    }
+
+    public static AnoEscolaridadeRespostaDTO convertToDTO(AnoEscolaridade ae) {
+        return new AnoEscolaridadeRespostaDTO(ae.getId(), ae.getNome(), ae.getDescricao(), ae.getUnidadeEscolar());
     }
 
     public int getId() {
@@ -48,7 +42,7 @@ public class AnoEscolaridade {
         return descricao;
     }
 
-    public void setDescricao(String descricao) {
+    public void setDescricao(String data) {
         this.descricao = descricao;
     }
 

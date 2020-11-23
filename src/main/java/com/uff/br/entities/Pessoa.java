@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Set;
 
 @Entity
 public class Pessoa {
@@ -39,7 +40,13 @@ public class Pessoa {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "pessoa")
     private Usuario usuario;
 
-//    private Collection<Aluno> alunos;
+    @JsonBackReference(value = "aluno-pessoa")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPessoa")
+    private Set<Aluno> alunos;
+
+
+
+
 //
 //    private Collection<FaleConosco> faleConosco;
 //
@@ -49,7 +56,7 @@ public class Pessoa {
 
     public Pessoa() {}
 
-    public Pessoa(String nome, String identidade, String cpf, String sexo, String celular, String dtNasc, Endereco endereco, Usuario usuario) {
+    public Pessoa(String nome, String identidade, String cpf, String sexo, String celular, String dtNasc, Endereco endereco, Usuario usuario, Set<Aluno> alunos) {
         this.nome = nome;
         //this.email = email;
         this.identidade = identidade;
@@ -59,6 +66,7 @@ public class Pessoa {
         this.dtNasc = dtNasc;
         this.endereco = endereco;
         this.usuario = usuario;
+        this.alunos = alunos;
     }
 
 
@@ -132,5 +140,12 @@ public class Pessoa {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+    public Set<Aluno> getAlunos() {
+        return alunos;
+    }
+
+    public void setAlunos(Set<Aluno> alunos) {
+        this.alunos = alunos;
     }
 }
