@@ -10,10 +10,10 @@ public class UnidadeEscolarRespostaDTO {
     private int numVagas;
     private String data;
     private Endereco endereco;
-    private Set<AnoEscolaridade> anoEscolaridade;
+    private AnoEscolaridade anoEscolaridade;
 
 
-    private UnidadeEscolarRespostaDTO(int id, String nome, int numVagas, String data, Endereco endereco, Set<AnoEscolaridade> anoEscolaridade){
+    private UnidadeEscolarRespostaDTO(int id, String nome, int numVagas, String data, Endereco endereco,  AnoEscolaridade anoEscolaridade){
         this.id = id;
         this.nome = nome;
         this.numVagas = numVagas;
@@ -66,11 +66,11 @@ public class UnidadeEscolarRespostaDTO {
         this.endereco = endereco;
     }
 
-    public Set<AnoEscolaridade> getAnoEscolaridade() {
+    public AnoEscolaridade getAnoEscolaridade() {
         return anoEscolaridade;
     }
 
-    public void setAnoEscolaridade(Set<AnoEscolaridade> anoEscolaridade) {
+    public void setAnoEscolaridade(AnoEscolaridade anoEscolaridade) {
         this.anoEscolaridade = anoEscolaridade;
     }
 }

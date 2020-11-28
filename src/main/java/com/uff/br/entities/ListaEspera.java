@@ -1,5 +1,7 @@
 package com.uff.br.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.Entity;
 import javax.persistence.*;
 import java.util.Set;
@@ -14,6 +16,7 @@ public class ListaEspera {
 
     @Column(name = "data")
     private String data;
+
 
     @JoinColumn(name = "aluno", referencedColumnName = "id")
     @ManyToOne(cascade = CascadeType.ALL)

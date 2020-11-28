@@ -1,3 +1,4 @@
+/*
 package com.uff.br.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -9,7 +10,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class UnidadeEscolar {
+public class UnidadeEscolarAnoEscolaridade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -24,49 +25,38 @@ public class UnidadeEscolar {
     @Column(name = "data")
     private String data;
 
-
+    */
 /*@OneToMany(cascade = CascadeType.ALL, mappedBy = "unidadeEscolarAnoEscolaridade")
     private Set<Solicitacao> solicitacao;
-*/
+*//*
 
-    @JsonManagedReference(value = "endereco-unidade")
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "endereco", referencedColumnName = "id")
-    private Endereco endereco;
-
-
-
+    @JsonIgnore
+    @JsonManagedReference(value = "anoEscolaridade-unidadeEscolarAnoEscolaridade")
     @JoinColumn(name = "anoEscolaridade", referencedColumnName = "id")
     @ManyToOne(cascade = CascadeType.ALL)
     private AnoEscolaridade anoEscolaridade;
 
-/*
-
     @JsonIgnore
-    @JsonBackReference(value = "unidadeEscolar-unidadeEscolarAnoEscolaridade")
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "unidadeEscolar")
-    private Set<UnidadeEscolarAnoEscolaridade> unidadeEscolarAnoEscolaridade;
-*/
+    @JsonManagedReference(value = "unidadeEscolar-unidadeEscolarAnoEscolaridade")
+    @JoinColumn(name = "unidadeEscolar", referencedColumnName = "id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    private UnidadeEscolar unidadeEscolar;
 
 
-    /*
+    public UnidadeEscolarAnoEscolaridade() {}
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "unidadeEscolar_anoEscolaridade", joinColumns = @JoinColumn(name = "idUnidadeEscolar"), inverseJoinColumns = @JoinColumn(name ="idAnoEscolaridade"))
-    private Set<AnoEscolaridade> anoEscolaridade;
-*/
-   /* @OneToMany(cascade = CascadeType.ALL, mappedBy = "unidadeEscolar_anoEscolaridade")
-    private Set<Solicitacao> solicitacao;
-*/
-    public UnidadeEscolar() {}
-
-    public UnidadeEscolar(String nome, int numVagas, String data, Endereco endereco, AnoEscolaridade anoEscolaridade){
+    public UnidadeEscolarAnoEscolaridade(String nome, int numVagas, String data, AnoEscolaridade anoEscolaridade, UnidadeEscolar unidadeEscolar){
         this.nome = nome;
         this.numVagas = numVagas;
         this.data = data;
-        this.endereco = endereco;
+        */
+/*this.solicitacao = solicitacao;*//*
+
         this.anoEscolaridade = anoEscolaridade;
+        this.unidadeEscolar = unidadeEscolar;
     }
+
+
 
     public int getId() {
         return id;
@@ -82,14 +72,6 @@ public class UnidadeEscolar {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
     }
 
     public int getNumVagas() {
@@ -108,6 +90,16 @@ public class UnidadeEscolar {
         this.data = data;
     }
 
+    */
+/*public Set<Solicitacao> getSolicitacao() {
+        return solicitacao;
+    }
+
+    public void setSolicitacao(Set<Solicitacao> solicitacao) {
+        this.solicitacao = solicitacao;
+    }*//*
+
+
     public AnoEscolaridade getAnoEscolaridade() {
         return anoEscolaridade;
     }
@@ -115,4 +107,13 @@ public class UnidadeEscolar {
     public void setAnoEscolaridade(AnoEscolaridade anoEscolaridade) {
         this.anoEscolaridade = anoEscolaridade;
     }
+
+    public UnidadeEscolar getUnidadeEscolar() {
+        return unidadeEscolar;
+    }
+
+    public void setUnidadeEscolar(UnidadeEscolar unidadeEscolar) {
+        this.unidadeEscolar = unidadeEscolar;
+    }
 }
+*/

@@ -1,6 +1,9 @@
 package com.uff.br.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -16,10 +19,19 @@ public class AnoEscolaridade {
     @Column(name = "descricao")
     private String descricao;
 
+
+
+
     @JsonIgnore
-    @ManyToMany(mappedBy = "anoEscolaridade")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "anoEscolaridade")
     private Set<UnidadeEscolar> unidadeEscolar;
 
+
+    /*@JsonIgnore
+    @JsonBackReference(value = "anoEscolaridade-unidadeEscolarAnoEscolaridade")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "anoEscolaridade")
+    private Set<UnidadeEscolarAnoEscolaridade> unidadeEscolarAnoEscolaridade;
+*/
     public AnoEscolaridade() {}
 
     public AnoEscolaridade(String nome, String descricao, Set<UnidadeEscolar> unidadeEscolar) {

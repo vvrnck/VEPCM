@@ -1,23 +1,24 @@
+/*
 package com.uff.br.DTO;
 
-import com.uff.br.entities.AnoEscolaridade;
-import com.uff.br.entities.Endereco;
-import com.uff.br.entities.UnidadeEscolar;
-
+import com.uff.br.entities.*;
 
 
 import java.util.Set;
 
-public class UnidadeEscolarDTO {
+public class UnidadeEscolarAnoEscolaridadeDTO {
     private String nome;
     private int numVagas;
     private String data;
-    private Endereco endereco;
+  */
+/*  private Set<Solicitacao> solicitacao;*//*
+
     private AnoEscolaridade anoEscolaridade;
+    private UnidadeEscolar unidadeEscolar;
 
 
-    public UnidadeEscolar convertToObject() {
-        return new UnidadeEscolar(nome, numVagas, data, endereco, anoEscolaridade);
+    public UnidadeEscolarAnoEscolaridade convertToObject() {
+        return new UnidadeEscolarAnoEscolaridade(nome, numVagas, data, anoEscolaridade, unidadeEscolar);
     }
 
     public String getNome() {
@@ -43,14 +44,16 @@ public class UnidadeEscolarDTO {
     public void setData(String data) {
         this.data = data;
     }
-
-    public Endereco getEndereco() {
-        return endereco;
+*/
+/*
+    public Set<Solicitacao> getSolicitacao() {
+        return solicitacao;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
+    public void setSolicitacao(Set<Solicitacao> solicitacao) {
+        this.solicitacao = solicitacao;
+    }*//*
+
 
     public AnoEscolaridade getAnoEscolaridade() {
         return anoEscolaridade;
@@ -59,4 +62,13 @@ public class UnidadeEscolarDTO {
     public void setAnoEscolaridade(AnoEscolaridade anoEscolaridade) {
         this.anoEscolaridade = anoEscolaridade;
     }
+
+    public UnidadeEscolar getUnidadeEscolar() {
+        return unidadeEscolar;
+    }
+
+    public void setUnidadeEscolar(UnidadeEscolar unidadeEscolar) {
+        this.unidadeEscolar = unidadeEscolar;
+    }
 }
+*/

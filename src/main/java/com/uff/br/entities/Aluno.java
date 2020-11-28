@@ -1,6 +1,7 @@
 package com.uff.br.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -27,12 +28,13 @@ public class Aluno {
     @ManyToOne(cascade = CascadeType.ALL)
     private Pessoa idPessoa;
 
-
+    /*@JsonIgnore
     @JoinColumn(name = "idResponsavel", referencedColumnName = "id")
     @ManyToOne(cascade = CascadeType.ALL)
-    private Pessoa idResponsavel;
+    private Responsavel idResponsavel;*/
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "aluno")
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "aluno")
     private Set<ListaEspera> listaEspera;
 //
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "aluno")
@@ -42,12 +44,12 @@ public class Aluno {
 
     public Aluno() {    }
 
-    public Aluno(String naturalidade, String nomeMae, String nomePai, Pessoa idPessoa, Pessoa idResponsavel, Set<ListaEspera> listaEspera) {
+    public Aluno(String naturalidade, String nomeMae, String nomePai, Pessoa idPessoa, /*Responsavel idResponsavel,*/ Set<ListaEspera> listaEspera) {
         this.naturalidade = naturalidade;
         this.nomeMae = nomeMae;
         this.nomePai = nomePai;
-        this.idPessoa = idPessoa;
-        this.idResponsavel = idResponsavel;
+        this.idPessoa = idPessoa;/*
+        this.idResponsavel = idResponsavel;*/
         this.listaEspera = listaEspera;
     }
 
@@ -90,14 +92,14 @@ public class Aluno {
     public void setIdPessoa(Pessoa idPessoa) {
         this.idPessoa = idPessoa;
     }
-
-    public Pessoa getIdResponsavel() {
+/*
+    public Responsavel getIdResponsavel() {
         return idResponsavel;
     }
 
-    public void setIdResponsavel(Pessoa idResponsavel) {
+    public void setIdResponsavel(Responsavel idResponsavel) {
         this.idResponsavel = idResponsavel;
-    }
+    }*/
 
     public Set<ListaEspera> getListaEspera() {
         return listaEspera;

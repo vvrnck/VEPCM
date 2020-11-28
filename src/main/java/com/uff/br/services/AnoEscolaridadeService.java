@@ -37,8 +37,8 @@ public class AnoEscolaridadeService {
     public AnoEscolaridade atualizaAnoEscolaridade (int id, AnoEscolaridade anoEscolaridade) {
         Optional<AnoEscolaridade> ae = anoEscolaridadeRepository.findById(id);
         if (ae.isPresent()) {
-            ae.get().setDescricao(anoEscolaridade.getDescricao());
             ae.get().setNome(anoEscolaridade.getNome());
+            ae.get().setDescricao(anoEscolaridade.getDescricao());
             ae.get().setUnidadeEscolar(anoEscolaridade.getUnidadeEscolar());
         }
         return anoEscolaridadeRepository.save(ae.get());

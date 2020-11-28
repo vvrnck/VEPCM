@@ -3,6 +3,8 @@ package com.uff.br.DTO;
 
 import com.uff.br.entities.AnoEscolaridade;
 import com.uff.br.entities.UnidadeEscolar;
+//import com.uff.br.entities.UnidadeEscolarAnoEscolaridade;
+
 import java.util.Set;
 
 public class AnoEscolaridadeDTO {

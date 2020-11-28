@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.sql.Connection;
 import java.util.Optional;
 
 @Service
@@ -26,6 +27,13 @@ public class UsuarioService {
 
     public RequestStatus getAll() {
         return new RequestStatus(HttpStatus.OK.value(), usuarioRepository.findAll());
+    }
+
+    public RequestStatus getAuth(Usuario usuario){
+        Usuario u = usuarioRepository.getAuth(usuario.getEmail(), usuario.getSenha());
+        return new RequestStatus(HttpStatus.OK.value(), u);
+
+
     }
 
     public RequestStatus getById(int id) {

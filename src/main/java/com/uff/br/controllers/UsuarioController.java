@@ -29,6 +29,11 @@ public class UsuarioController {
         return new ResponseEntity<>(UsuarioRespostaDTO.convertToDTO(u), HttpStatus.CREATED);
     }
 
+    @PostMapping(path="/login")
+    public RequestStatus auth (@RequestBody UsuarioDTO dto) {
+        return usuarioService.getAuth(dto.convertToObject());
+    }
+
     @GetMapping(path="")
     public RequestStatus findAll () {
         return usuarioService.getAll();

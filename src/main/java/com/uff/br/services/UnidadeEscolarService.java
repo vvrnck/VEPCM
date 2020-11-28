@@ -1,5 +1,6 @@
 package com.uff.br.services;
 
+
 import com.uff.br.entities.UnidadeEscolar;
 import com.uff.br.repository.UnidadeEscolarRepository;
 import com.uff.br.utils.RequestStatus;
@@ -31,15 +32,15 @@ public class UnidadeEscolarService {
 
     public RequestStatus removeUnidadeEscolar (int id) {
         unidadeEscolarRepository.deleteById(id);
-        return new RequestStatus(HttpStatus.OK.value(), "Unidade escolar removida com sucesso!");
+        return new RequestStatus(HttpStatus.OK.value(), "Unidade Escolar removida com sucesso!");
     }
 
     public UnidadeEscolar atualizaUnidadeEscolar (int id, UnidadeEscolar unidadeEscolar) {
         Optional<UnidadeEscolar> ue = unidadeEscolarRepository.findById(id);
         if (ue.isPresent()) {
+            ue.get().setNome(unidadeEscolar.getNome());
             ue.get().setEndereco(unidadeEscolar.getEndereco());
             ue.get().setData(unidadeEscolar.getData());
-            ue.get().setNome(unidadeEscolar.getNome());
             ue.get().setNumVagas(unidadeEscolar.getNumVagas());
             ue.get().setAnoEscolaridade(unidadeEscolar.getAnoEscolaridade());
         }

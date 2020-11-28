@@ -46,7 +46,7 @@ public class AlunoService {
             a.get().setNomeMae(aluno.getNomeMae());
             a.get().setNomePai(aluno.getNomePai());
             a.get().setIdPessoa(aluno.getIdPessoa());
-            a.get().setIdResponsavel(aluno.getIdResponsavel());
+           /* a.get().setIdResponsavel(aluno.getIdResponsavel());*/
             a.get().setListaEspera(aluno.getListaEspera());
         }
         return alunoRepository.save(a.get());

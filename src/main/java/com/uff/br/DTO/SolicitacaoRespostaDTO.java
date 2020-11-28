@@ -1,47 +1,28 @@
 /*
-package com.uff.br.entities;
+package com.uff.br.DTO;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.uff.br.entities.*;
 
-import javax.persistence.*;
+import java.util.Set;
 
-
-@Entity
-public class Solicitacao {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class SolicitacaoRespostaDTO {
     private int id;
-
-    @Column(name = "protocolo")
     private String protocolo;
-
-    @JoinColumn(name = "idAluno", referencedColumnName = "id")
-    @ManyToOne(cascade = CascadeType.ALL)
     private Aluno idAluno;
-
-    @JoinColumn(name = "idResponsavel", referencedColumnName = "id")
-    @ManyToOne(cascade = CascadeType.ALL)
     private Responsavel idResponsavel;
-
-    @JoinColumns({
-       @JoinColumn(name = "idUnidadeEscolar", referencedColumnName = "idUnidadeEscolar")
-     , @JoinColumn(name = "idAnoEscolaridade", referencedColumnName = "idAnoEscolaridade")})
-    @ManyToOne(cascade = CascadeType.ALL)
-    private  UnidadeEscolarAnoEscolaridade unidadeEscolarAnoEscolaridade;
+    private UnidadeEscolarAnoEscolaridade unidadeEscolarAnoEscolaridade;
 
 
-   */
-/* @OneToMany(cascade = CascadeType.ALL, mappedBy = "solicitacao")
-    private Set<SolicitacaoResponsavel> solicitacaoResponsavel;
-*//*
-
-   public Solicitacao() {}
-
-    public Solicitacao(String protocolo, Aluno idAluno, Responsavel idResponsavel, UnidadeEscolarAnoEscolaridade unidadeEscolarAnoEscolaridade){
+    private SolicitacaoRespostaDTO(int id, String protocolo, Aluno idAluno, Responsavel idResponsavel, UnidadeEscolarAnoEscolaridade unidadeEscolarAnoEscolaridade){
+        this.id = id;
         this.protocolo = protocolo;
         this.idAluno = idAluno;
         this.idResponsavel = idResponsavel;
         this.unidadeEscolarAnoEscolaridade = unidadeEscolarAnoEscolaridade;
+    }
+
+    public static SolicitacaoRespostaDTO convertToDTO(Solicitacao solicitacao) {
+        return new SolicitacaoRespostaDTO(solicitacao.getId(), solicitacao.getProtocolo(), solicitacao.getIdAluno(), solicitacao.getIdResponsavel(), solicitacao.getUnidadeEscolarAnoEscolaridade());
     }
 
     public int getId() {
@@ -84,7 +65,4 @@ public class Solicitacao {
         this.unidadeEscolarAnoEscolaridade = unidadeEscolarAnoEscolaridade;
     }
 }
-
-
-
 */
