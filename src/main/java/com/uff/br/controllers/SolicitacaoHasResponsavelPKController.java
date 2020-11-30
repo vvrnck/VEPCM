@@ -30,7 +30,7 @@ public class SolicitacaoHasResponsavelPKController {
     }
 
     @DeleteMapping(path="/{id}")
-    public @ResponseBody RequestStatus removePerson (@PathVariable int id) {
+    public @ResponseBody RequestStatus removeSolicitacaoHasResponsavelPK (@PathVariable int id) {
         solicitacaoHasResponsavelPKRepository.deleteById(id);
         return new RequestStatus(HttpStatus.OK.value());
     }
