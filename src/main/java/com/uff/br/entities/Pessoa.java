@@ -44,6 +44,11 @@ public class Pessoa {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPessoa")
     private Set<Aluno> alunos;
 
+    @JsonBackReference (value = "gestor-pessoa")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPessoa")
+    private Set<Gestor> gestores;
+
+
 //
 //    private Collection<FaleConosco> faleConosco;
 //
@@ -51,7 +56,7 @@ public class Pessoa {
 
     public Pessoa() {}
 
-    public Pessoa(String nome, String identidade, String cpf, String sexo, String celular, String dtNasc, Endereco endereco, Usuario usuario, Set<Aluno> alunos) {
+    public Pessoa(String nome, String identidade, String cpf, String sexo, String celular, String dtNasc, Endereco endereco, Usuario usuario, Set<Aluno> alunos, Set<Gestor> gestores) {
         this.nome = nome;
         //this.email = email;
         this.identidade = identidade;
@@ -62,6 +67,7 @@ public class Pessoa {
         this.endereco = endereco;
         this.usuario = usuario;
         this.alunos = alunos;
+        this.gestores= gestores;
     }
 
 
@@ -143,4 +149,8 @@ public class Pessoa {
     public void setAlunos(Set<Aluno> alunos) {
         this.alunos = alunos;
     }
+
+    public Set<Gestor> getGestores() { return gestores; }
+
+    public void setGestores(Set<Gestor> gestores) {this.gestores = gestores;}
 }

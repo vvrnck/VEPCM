@@ -1,9 +1,6 @@
 package com.uff.br.DTO;
 
-import com.uff.br.entities.Aluno;
-import com.uff.br.entities.Endereco;
-import com.uff.br.entities.Pessoa;
-import com.uff.br.entities.Usuario;
+import com.uff.br.entities.*;
 
 import java.util.Set;
 
@@ -19,8 +16,9 @@ public class PessoaRespostaDTO {
     private Endereco endereco;
     private Usuario usuario;
     private Set<Aluno> alunos;
+    private Set<Gestor> gestores;
 
-    private PessoaRespostaDTO(int id, String nome, String cpf, String identidade, String sexo, String celular, String dtNasc, Endereco endereco, Usuario usuario, Set<Aluno> alunos){
+    private PessoaRespostaDTO(int id, String nome, String cpf, String identidade, String sexo, String celular, String dtNasc, Endereco endereco, Usuario usuario, Set<Aluno> alunos, Set<Gestor> gestores){
         this.id = id;
         this.nome = nome;
         //this.email = email;
@@ -32,10 +30,11 @@ public class PessoaRespostaDTO {
         this.endereco = endereco;
         this.usuario = usuario;
         this.alunos = alunos;
+        this.gestores= gestores;
     }
 
     public static PessoaRespostaDTO convertToDTO(Pessoa pessoa) {
-        return new PessoaRespostaDTO(pessoa.getId(), pessoa.getNome(), pessoa.getCpf(), pessoa.getIdentidade(), pessoa.getSexo(), pessoa.getCelular(), pessoa.getDtNasc(), pessoa.getEndereco(), pessoa.getUsuario(), pessoa.getAlunos());
+        return new PessoaRespostaDTO(pessoa.getId(), pessoa.getNome(), pessoa.getCpf(), pessoa.getIdentidade(), pessoa.getSexo(), pessoa.getCelular(), pessoa.getDtNasc(), pessoa.getEndereco(), pessoa.getUsuario(), pessoa.getAlunos(), pessoa.getGestores());
     }
 
 
@@ -119,4 +118,13 @@ public class PessoaRespostaDTO {
     public void setAlunos(Set<Aluno> alunos) {
         this.alunos = alunos;
     }
+
+    public Set<Gestor> getGestores() {
+        return gestores;
+    }
+
+    public void setGestores(Set<Gestor> gestores) {
+        this.gestores = gestores;
+    }
 }
+
