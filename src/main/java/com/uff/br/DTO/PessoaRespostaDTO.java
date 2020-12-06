@@ -17,8 +17,9 @@ public class PessoaRespostaDTO {
     private Usuario usuario;
     private Set<Aluno> alunos;
     private Set<Responsavel> responsavel;
+    private Set<Gestor> gestores;
 
-    private PessoaRespostaDTO(int id, String nome, String cpf, String identidade, String sexo, String celular, String dtNasc, Endereco endereco, Usuario usuario, Set<Aluno> alunos, Set<Responsavel> responsavel){
+    private PessoaRespostaDTO(int id, String nome, String cpf, String identidade, String sexo, String celular, String dtNasc, Endereco endereco, Usuario usuario, Set<Aluno> alunos, Set<Responsavel> responsavel, Set<Gestor> gestores){
         this.id = id;
         this.nome = nome;
         //this.email = email;
@@ -31,12 +32,13 @@ public class PessoaRespostaDTO {
         this.usuario = usuario;
         this.alunos = alunos;
         this.responsavel = responsavel;
+        this.gestores= gestores;
     }
 
     public static PessoaRespostaDTO convertToDTO(Pessoa pessoa) {
-        return new PessoaRespostaDTO(pessoa.getId(), pessoa.getNome(), pessoa.getCpf(), pessoa.getIdentidade(), pessoa.getSexo(), pessoa.getCelular(), pessoa.getDtNasc(), pessoa.getEndereco(), pessoa.getUsuario(), pessoa.getAlunos(), pessoa.getResponsavel());
-    }
+        return new PessoaRespostaDTO(pessoa.getId(), pessoa.getNome(), pessoa.getCpf(), pessoa.getIdentidade(), pessoa.getSexo(), pessoa.getCelular(), pessoa.getDtNasc(), pessoa.getEndereco(), pessoa.getUsuario(), pessoa.getAlunos(), pessoa.getResponsavel(), pessoa.getGestores());
 
+    }
 
     public int getId() {
         return id;
@@ -125,4 +127,13 @@ public class PessoaRespostaDTO {
     public void setResponsavel(Set<Responsavel> responsavel) {
         this.responsavel = responsavel;
     }
+
+    public Set<Gestor> getGestores() {
+        return gestores;
+    }
+
+    public void setGestores(Set<Gestor> gestores) {
+        this.gestores = gestores;
+    }
 }
+

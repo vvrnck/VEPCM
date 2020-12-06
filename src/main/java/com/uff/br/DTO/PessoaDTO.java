@@ -16,9 +16,10 @@ public class PessoaDTO {
     private Usuario usuario;
     private Set<Aluno> alunos;
     private Set<Responsavel> responsavel;
+    private Set<Gestor>gestores;
 
     public Pessoa convertToObject() {
-        return new Pessoa(nome, identidade, cpf, sexo, celular, dtNasc, endereco, usuario, alunos, responsavel);
+        return new Pessoa(nome, identidade, cpf, sexo, celular, dtNasc, endereco, usuario, alunos, responsavel, gestores);
     }
 
     public String getNome() {
@@ -96,6 +97,14 @@ public class PessoaDTO {
     }
 
     public void setResponsavel(Set<Responsavel> responsavel) {
-        this.responsavel = responsavel;
+        this.responsavel = responsavel;}
+
+    public Set<Gestor> getGestores() {
+        return gestores;
+    }
+
+    public void setGestores(Set<Gestor> gestores) {
+        this.gestores = gestores;
+
     }
 }

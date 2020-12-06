@@ -49,6 +49,7 @@ public class PessoaService {
             p.get().setUsuario(pessoa.getUsuario());
             p.get().setAlunos(pessoa.getAlunos());
             p.get().setResponsavel(pessoa.getResponsavel());
+            p.get().setGestores(pessoa.getGestores());
         }
         return pessoaRepository.save(p.get());
     }
