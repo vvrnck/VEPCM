@@ -1,6 +1,7 @@
 package com.uff.br.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -44,6 +45,9 @@ public class Pessoa {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPessoa")
     private Set<Aluno> alunos;
 
+    @JsonBackReference(value = "pessoa-Responsavel")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPessoa")
+    private Set<Responsavel> responsavel;
 //
 //    private Collection<FaleConosco> faleConosco;
 //
@@ -51,7 +55,7 @@ public class Pessoa {
 
     public Pessoa() {}
 
-    public Pessoa(String nome, String identidade, String cpf, String sexo, String celular, String dtNasc, Endereco endereco, Usuario usuario, Set<Aluno> alunos) {
+    public Pessoa(String nome, String identidade, String cpf, String sexo, String celular, String dtNasc, Endereco endereco, Usuario usuario, Set<Aluno> alunos, Set<Responsavel> responsavel) {
         this.nome = nome;
         //this.email = email;
         this.identidade = identidade;
@@ -62,6 +66,7 @@ public class Pessoa {
         this.endereco = endereco;
         this.usuario = usuario;
         this.alunos = alunos;
+        this.responsavel = responsavel;
     }
 
 
@@ -142,5 +147,13 @@ public class Pessoa {
 
     public void setAlunos(Set<Aluno> alunos) {
         this.alunos = alunos;
+    }
+
+    public Set<Responsavel> getResponsavel() {
+        return responsavel;
+    }
+
+    public void setResponsavel(Set<Responsavel> responsavel) {
+        this.responsavel = responsavel;
     }
 }

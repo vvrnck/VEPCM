@@ -40,6 +40,7 @@ public class AnoEscolaridadeService {
             ae.get().setNome(anoEscolaridade.getNome());
             ae.get().setDescricao(anoEscolaridade.getDescricao());
             ae.get().setUnidadeEscolar(anoEscolaridade.getUnidadeEscolar());
+            ae.get().setIdSolicitacaoRespAluno(anoEscolaridade.getIdSolicitacaoRespAluno());
         }
         return anoEscolaridadeRepository.save(ae.get());
     }

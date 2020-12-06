@@ -1,8 +1,6 @@
 package com.uff.br.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -19,13 +17,14 @@ public class AnoEscolaridade {
     @Column(name = "descricao")
     private String descricao;
 
-
-
-
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "anoEscolaridade")
     private Set<UnidadeEscolar> unidadeEscolar;
 
+    @JsonIgnore
+    @JoinColumn(name = "idSolicitacaoRespAluno", referencedColumnName = "id")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "idAnoEscolaridade")
+    private SolicitacaoRespAluno idSolicitacaoRespAluno;
 
     /*@JsonIgnore
     @JsonBackReference(value = "anoEscolaridade-unidadeEscolarAnoEscolaridade")
@@ -34,10 +33,11 @@ public class AnoEscolaridade {
 */
     public AnoEscolaridade() {}
 
-    public AnoEscolaridade(String nome, String descricao, Set<UnidadeEscolar> unidadeEscolar) {
+    public AnoEscolaridade(String nome, String descricao, Set<UnidadeEscolar> unidadeEscolar, SolicitacaoRespAluno idSolicitacaoRespAluno) {
         this.nome = nome;
         this.descricao = descricao;
         this.unidadeEscolar = unidadeEscolar;
+        this.idSolicitacaoRespAluno = idSolicitacaoRespAluno;
     }
 
     public int getId() {
@@ -70,5 +70,13 @@ public class AnoEscolaridade {
 
     public void setUnidadeEscolar(Set<UnidadeEscolar> unidadeEscolar) {
         this.unidadeEscolar = unidadeEscolar;
+    }
+
+    public SolicitacaoRespAluno getIdSolicitacaoRespAluno() {
+        return idSolicitacaoRespAluno;
+    }
+
+    public void setIdSolicitacaoRespAluno(SolicitacaoRespAluno idSolicitacaoRespAluno) {
+        this.idSolicitacaoRespAluno = idSolicitacaoRespAluno;
     }
 }

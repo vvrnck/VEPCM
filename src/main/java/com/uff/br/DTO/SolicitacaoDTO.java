@@ -1,17 +1,23 @@
-/*
 package com.uff.br.DTO;
 
 import com.uff.br.entities.*;
 
 
 public class SolicitacaoDTO {
+    private String data;
     private String protocolo;
-    private Aluno idAluno;
-    private Responsavel idResponsavel;
-    private UnidadeEscolarAnoEscolaridade unidadeEscolarAnoEscolaridade;
+    private SolicitacaoRespAluno idSolicitacaoRespAluno;
 
     public Solicitacao convertToObject() {
-        return new Solicitacao (protocolo, idAluno, idResponsavel, unidadeEscolarAnoEscolaridade);
+        return new Solicitacao (data, protocolo, idSolicitacaoRespAluno);
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 
     public String getProtocolo() {
@@ -22,28 +28,11 @@ public class SolicitacaoDTO {
         this.protocolo = protocolo;
     }
 
-    public Aluno getIdAluno() {
-        return idAluno;
+    public SolicitacaoRespAluno getIdSolicitacaoRespAluno() {
+        return idSolicitacaoRespAluno;
     }
 
-    public void setIdAluno(Aluno idAluno) {
-        this.idAluno = idAluno;
-    }
-
-    public Responsavel getIdResponsavel() {
-        return idResponsavel;
-    }
-
-    public void setIdResponsavel(Responsavel idResponsavel) {
-        this.idResponsavel = idResponsavel;
-    }
-
-    public UnidadeEscolarAnoEscolaridade getUnidadeEscolarAnoEscolaridade() {
-        return unidadeEscolarAnoEscolaridade;
-    }
-
-    public void setUnidadeEscolarAnoEscolaridade(UnidadeEscolarAnoEscolaridade unidadeEscolarAnoEscolaridade) {
-        this.unidadeEscolarAnoEscolaridade = unidadeEscolarAnoEscolaridade;
+    public void setIdSolicitacaoRespAluno(SolicitacaoRespAluno idSolicitacaoRespAluno) {
+        this.idSolicitacaoRespAluno = idSolicitacaoRespAluno;
     }
 }
-*/

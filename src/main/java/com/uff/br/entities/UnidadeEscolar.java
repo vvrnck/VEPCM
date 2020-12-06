@@ -20,52 +20,46 @@ public class UnidadeEscolar {
     @Column(name = "numVagas")
     private int numVagas;
 
-
     @Column(name = "data")
     private String data;
-
-
-/*@OneToMany(cascade = CascadeType.ALL, mappedBy = "unidadeEscolarAnoEscolaridade")
-    private Set<Solicitacao> solicitacao;
-*/
 
     @JsonManagedReference(value = "endereco-unidade")
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "endereco", referencedColumnName = "id")
     private Endereco endereco;
 
-
-
+    @JsonIgnore
     @JoinColumn(name = "anoEscolaridade", referencedColumnName = "id")
     @ManyToOne(cascade = CascadeType.ALL)
     private AnoEscolaridade anoEscolaridade;
 
-/*
+    @JsonIgnore
+    @JoinColumn(name = "idSolicitacaoRespAluno", referencedColumnName = "id")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "idUnidadeEscolar")
+    private SolicitacaoRespAluno idSolicitacaoRespAluno;
 
+
+
+/*
     @JsonIgnore
     @JsonBackReference(value = "unidadeEscolar-unidadeEscolarAnoEscolaridade")
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "unidadeEscolar")
     private Set<UnidadeEscolarAnoEscolaridade> unidadeEscolarAnoEscolaridade;
-*/
-
-
-    /*
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "unidadeEscolar_anoEscolaridade", joinColumns = @JoinColumn(name = "idUnidadeEscolar"), inverseJoinColumns = @JoinColumn(name ="idAnoEscolaridade"))
     private Set<AnoEscolaridade> anoEscolaridade;
 */
-   /* @OneToMany(cascade = CascadeType.ALL, mappedBy = "unidadeEscolar_anoEscolaridade")
-    private Set<Solicitacao> solicitacao;
-*/
+
     public UnidadeEscolar() {}
 
-    public UnidadeEscolar(String nome, int numVagas, String data, Endereco endereco, AnoEscolaridade anoEscolaridade){
+    public UnidadeEscolar(String nome, int numVagas, String data, Endereco endereco, AnoEscolaridade anoEscolaridade, SolicitacaoRespAluno idSolicitacaoRespAluno){
         this.nome = nome;
         this.numVagas = numVagas;
         this.data = data;
         this.endereco = endereco;
         this.anoEscolaridade = anoEscolaridade;
+        this.idSolicitacaoRespAluno = idSolicitacaoRespAluno;
     }
 
     public int getId() {
@@ -114,5 +108,13 @@ public class UnidadeEscolar {
 
     public void setAnoEscolaridade(AnoEscolaridade anoEscolaridade) {
         this.anoEscolaridade = anoEscolaridade;
+    }
+
+    public SolicitacaoRespAluno getIdSolicitacaoRespAluno() {
+        return idSolicitacaoRespAluno;
+    }
+
+    public void setIdSolicitacaoRespAluno(SolicitacaoRespAluno idSolicitacaoRespAluno) {
+        this.idSolicitacaoRespAluno = idSolicitacaoRespAluno;
     }
 }

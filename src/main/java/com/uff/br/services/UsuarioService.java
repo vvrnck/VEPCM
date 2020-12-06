@@ -53,7 +53,7 @@ public class UsuarioService {
             u.get().setPessoa(usuario.getPessoa());
             u.get().setTipoUsuario(usuario.getTipoUsuario());
         }
-        return usuarioRepository.save(u.get());
+            return usuarioRepository.save(u.get());
     }
 
 }

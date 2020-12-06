@@ -46,10 +46,10 @@ public class AlunoService {
             a.get().setNomeMae(aluno.getNomeMae());
             a.get().setNomePai(aluno.getNomePai());
             a.get().setIdPessoa(aluno.getIdPessoa());
-           /* a.get().setIdResponsavel(aluno.getIdResponsavel());*/
+            a.get().setIdResponsavelAluno(aluno.getIdResponsavelAluno());
             a.get().setListaEspera(aluno.getListaEspera());
+            a.get().setIdSolicitacaoRespAluno(aluno.getIdSolicitacaoRespAluno());
         }
         return alunoRepository.save(a.get());
     }
-
 }

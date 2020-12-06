@@ -1,4 +1,3 @@
-/*
 package com.uff.br.controllers;
 
 
@@ -51,4 +50,4 @@ public class SolicitacaoController {
         Solicitacao s = solicitacaoService.atualizaSolicitacao(id, dto.convertToObject());
         return new ResponseEntity<>(SolicitacaoRespostaDTO.convertToDTO(s), HttpStatus.OK);
     }
-}*/
+}

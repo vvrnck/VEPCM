@@ -2,10 +2,9 @@ package com.uff.br.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Set;
 
 @Entity
@@ -28,29 +27,32 @@ public class Aluno {
     @ManyToOne(cascade = CascadeType.ALL)
     private Pessoa idPessoa;
 
-    /*@JsonIgnore
-    @JoinColumn(name = "idResponsavel", referencedColumnName = "id")
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Responsavel idResponsavel;*/
+    @JsonIgnore
+    @JoinColumn(name = "idResponsavelAluno", referencedColumnName = "id")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "idAluno")
+    private ResponsavelAluno idResponsavelAluno;
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "aluno")
     private Set<ListaEspera> listaEspera;
-//
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "aluno")
-//    private Collection<Solicitacao> solicitacaoCollection;
-//
+
+    @JsonIgnore
+    @JoinColumn(name = "idSolicitacaoRespAluno", referencedColumnName = "id")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "idAluno")
+    private SolicitacaoRespAluno idSolicitacaoRespAluno;
+
 
 
     public Aluno() {    }
 
-    public Aluno(String naturalidade, String nomeMae, String nomePai, Pessoa idPessoa, /*Responsavel idResponsavel,*/ Set<ListaEspera> listaEspera) {
+    public Aluno(String naturalidade, String nomeMae, String nomePai, Pessoa idPessoa, ResponsavelAluno idResponsavelAluno, Set<ListaEspera> listaEspera, SolicitacaoRespAluno idSolicitacaoRespAluno) {
         this.naturalidade = naturalidade;
         this.nomeMae = nomeMae;
         this.nomePai = nomePai;
-        this.idPessoa = idPessoa;/*
-        this.idResponsavel = idResponsavel;*/
+        this.idPessoa = idPessoa;
+        this.idResponsavelAluno = idResponsavelAluno;
         this.listaEspera = listaEspera;
+        this.idSolicitacaoRespAluno = idSolicitacaoRespAluno;
     }
 
     public int getId() {
@@ -92,14 +94,14 @@ public class Aluno {
     public void setIdPessoa(Pessoa idPessoa) {
         this.idPessoa = idPessoa;
     }
-/*
-    public Responsavel getIdResponsavel() {
-        return idResponsavel;
+
+    public ResponsavelAluno getIdResponsavelAluno() {
+        return idResponsavelAluno;
     }
 
-    public void setIdResponsavel(Responsavel idResponsavel) {
-        this.idResponsavel = idResponsavel;
-    }*/
+    public void setIdResponsavelAluno(ResponsavelAluno idResponsavelAluno) {
+        this.idResponsavelAluno = idResponsavelAluno;
+    }
 
     public Set<ListaEspera> getListaEspera() {
         return listaEspera;
@@ -107,5 +109,13 @@ public class Aluno {
 
     public void setListaEspera(Set<ListaEspera> listaEspera) {
         this.listaEspera = listaEspera;
+    }
+
+    public SolicitacaoRespAluno getIdSolicitacaoRespAluno() {
+        return idSolicitacaoRespAluno;
+    }
+
+    public void setIdSolicitacaoRespAluno(SolicitacaoRespAluno idSolicitacaoRespAluno) {
+        this.idSolicitacaoRespAluno = idSolicitacaoRespAluno;
     }
 }

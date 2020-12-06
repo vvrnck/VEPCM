@@ -1,4 +1,3 @@
-/*
 package com.uff.br.DTO;
 
 import com.uff.br.entities.*;
@@ -7,22 +6,19 @@ import java.util.Set;
 
 public class SolicitacaoRespostaDTO {
     private int id;
+    private String data;
     private String protocolo;
-    private Aluno idAluno;
-    private Responsavel idResponsavel;
-    private UnidadeEscolarAnoEscolaridade unidadeEscolarAnoEscolaridade;
+    private SolicitacaoRespAluno idSolicitacaoRespAluno;
 
-
-    private SolicitacaoRespostaDTO(int id, String protocolo, Aluno idAluno, Responsavel idResponsavel, UnidadeEscolarAnoEscolaridade unidadeEscolarAnoEscolaridade){
+    private SolicitacaoRespostaDTO(int id, String data, String protocolo, SolicitacaoRespAluno idSolicitacaoRespAluno){
         this.id = id;
+        this.data = data;
         this.protocolo = protocolo;
-        this.idAluno = idAluno;
-        this.idResponsavel = idResponsavel;
-        this.unidadeEscolarAnoEscolaridade = unidadeEscolarAnoEscolaridade;
+        this.idSolicitacaoRespAluno = idSolicitacaoRespAluno;
     }
 
     public static SolicitacaoRespostaDTO convertToDTO(Solicitacao solicitacao) {
-        return new SolicitacaoRespostaDTO(solicitacao.getId(), solicitacao.getProtocolo(), solicitacao.getIdAluno(), solicitacao.getIdResponsavel(), solicitacao.getUnidadeEscolarAnoEscolaridade());
+        return new SolicitacaoRespostaDTO(solicitacao.getId(), solicitacao.getData(), solicitacao.getProtocolo(),  solicitacao.getIdSolicitacaoRespAluno());
     }
 
     public int getId() {
@@ -33,6 +29,14 @@ public class SolicitacaoRespostaDTO {
         this.id = id;
     }
 
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
     public String getProtocolo() {
         return protocolo;
     }
@@ -41,28 +45,11 @@ public class SolicitacaoRespostaDTO {
         this.protocolo = protocolo;
     }
 
-    public Aluno getIdAluno() {
-        return idAluno;
+    public SolicitacaoRespAluno getIdSolicitacaoRespAluno() {
+        return idSolicitacaoRespAluno;
     }
 
-    public void setIdAluno(Aluno idAluno) {
-        this.idAluno = idAluno;
-    }
-
-    public Responsavel getIdResponsavel() {
-        return idResponsavel;
-    }
-
-    public void setIdResponsavel(Responsavel idResponsavel) {
-        this.idResponsavel = idResponsavel;
-    }
-
-    public UnidadeEscolarAnoEscolaridade getUnidadeEscolarAnoEscolaridade() {
-        return unidadeEscolarAnoEscolaridade;
-    }
-
-    public void setUnidadeEscolarAnoEscolaridade(UnidadeEscolarAnoEscolaridade unidadeEscolarAnoEscolaridade) {
-        this.unidadeEscolarAnoEscolaridade = unidadeEscolarAnoEscolaridade;
+    public void setIdSolicitacaoRespAluno(SolicitacaoRespAluno idSolicitacaoRespAluno) {
+        this.idSolicitacaoRespAluno = idSolicitacaoRespAluno;
     }
 }
-*/

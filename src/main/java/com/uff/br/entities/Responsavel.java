@@ -1,7 +1,7 @@
-/*
 package com.uff.br.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -14,46 +14,31 @@ public class Responsavel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idResponsavel")
-    private Set<Aluno> aluno;
-*/
-/*
-
-   @OneToMany(cascade = CascadeType.ALL, mappedBy = "idResponsavel")
-    private Set<Solicitacao> solicitacao;
-
-*//*
-
-
-*/
-/*
-@OneToMany(cascade = CascadeType.ALL, mappedBy = "responsavel")
-    private Collection<SolicitacaoHasResponsavel> solicitacaoHasResponsavelCollection;
-*//*
-
-*/
-/*
-
+    @JsonBackReference(value = "pessoa-Responsavel")
     @JoinColumn(name = "idPessoa", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Pessoa idPessoa;
-*//*
 
+    @JsonIgnore
+    @JoinColumn(name = "idResponsavelAluno", referencedColumnName = "id")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "idResponsavel")
+    private ResponsavelAluno idResponsavelAluno;
 
+    @JsonIgnore
+    @JoinColumn(name = "idSolicitacaoRespAluno", referencedColumnName = "id")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "idResponsavel")
+    private SolicitacaoRespAluno idSolicitacaoRespAluno;
 
 
     public Responsavel() {}
-*/
-/*
 
-    public Responsavel(Set<Aluno> aluno
-, Set<Solicitacao> solicitacao
-) {
-        this.aluno = aluno;
- this.solicitacao = solicitacao;
+    public Responsavel(Pessoa idPessoa, ResponsavelAluno idResponsavelAluno, SolicitacaoRespAluno idSolicitacaoRespAluno) {
+
+        this.idPessoa = idPessoa;
+        this.idResponsavelAluno = idResponsavelAluno;
+        this.idSolicitacaoRespAluno = idSolicitacaoRespAluno;
 
     }
-*//*
 
 
     public int getId() {
@@ -64,23 +49,27 @@ public class Responsavel {
         this.id = id;
     }
 
-    public Set<Aluno> getAluno() {
-        return aluno;
+    public Pessoa getIdPessoa() {
+        return idPessoa;
     }
 
-    public void setAluno(Set<Aluno> aluno) {
-        this.aluno = aluno;
-    }
-*/
-/*
-public Set<Solicitacao> getSolicitacao() {
-        return solicitacao;
+    public void setIdPessoa(Pessoa idPessoa) {
+        this.idPessoa = idPessoa;
     }
 
-    public void setSolicitacao(Set<Solicitacao> solicitacao) {
-        this.solicitacao = solicitacao;
-    }*//*
+    public ResponsavelAluno getIdResponsavelAluno() {
+        return idResponsavelAluno;
+    }
 
+    public void setIdResponsavelAluno(ResponsavelAluno idResponsavelAluno) {
+        this.idResponsavelAluno = idResponsavelAluno;
+    }
 
+    public SolicitacaoRespAluno getIdSolicitacaoRespAluno() {
+        return idSolicitacaoRespAluno;
+    }
+
+    public void setIdSolicitacaoRespAluno(SolicitacaoRespAluno idSolicitacaoRespAluno) {
+        this.idSolicitacaoRespAluno = idSolicitacaoRespAluno;
+    }
 }
-*/

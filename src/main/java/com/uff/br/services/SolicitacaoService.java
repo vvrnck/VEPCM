@@ -1,4 +1,3 @@
-/*
 package com.uff.br.services;
 
 import com.uff.br.entities.Solicitacao;
@@ -38,12 +37,11 @@ public class SolicitacaoService {
     public Solicitacao atualizaSolicitacao (int id, Solicitacao solicitacao) {
         Optional<Solicitacao> s = solicitacaoRepository.findById(id);
         if (s.isPresent()) {
+            s.get().setData(solicitacao.getData());
             s.get().setProtocolo(solicitacao.getProtocolo());
-            s.get().setIdAluno(solicitacao.getIdAluno());
-            s.get().setIdResponsavel(solicitacao.getIdResponsavel());
-            s.get().setUnidadeEscolarAnoEscolaridade(solicitacao.getUnidadeEscolarAnoEscolaridade());
+            s.get().setIdSolicitacaoRespAluno(solicitacao.getIdSolicitacaoRespAluno());
         }
         return solicitacaoRepository.save(s.get());
     }
 
-}*/
+}

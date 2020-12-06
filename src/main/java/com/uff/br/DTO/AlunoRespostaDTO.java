@@ -1,9 +1,6 @@
 package com.uff.br.DTO;
 
-import com.uff.br.entities.Aluno;
-import com.uff.br.entities.ListaEspera;
-import com.uff.br.entities.Pessoa;
-//import com.uff.br.entities.Responsavel;
+import com.uff.br.entities.*;
 
 import java.util.Set;
 
@@ -13,23 +10,25 @@ public class AlunoRespostaDTO {
     private String nomeMae;
     private String nomePai;
     private Pessoa idPessoa;
-//    private Responsavel idResponsavel;
+    private ResponsavelAluno idResponsavelAluno;
     private Set<ListaEspera> listaEspera;
+    private SolicitacaoRespAluno idSolicitacaoRespAluno;
 
 
-    private AlunoRespostaDTO(int id, String naturalidade, String nomeMae, String nomePai, Pessoa idPessoa, /*Responsavel idResponsavel,*/ Set<ListaEspera> listaEspera){
+    private AlunoRespostaDTO(int id, String naturalidade, String nomeMae, String nomePai, Pessoa idPessoa, ResponsavelAluno idResponsavelAluno, Set<ListaEspera> listaEspera, SolicitacaoRespAluno idSolicitacaoRespAluno){
         this.id = id;
         this.naturalidade = naturalidade;
         this.nomeMae = nomeMae;
         this.nomePai = nomePai;
         this.idPessoa= idPessoa;
-//        this.idResponsavel = idResponsavel;
+        this.idResponsavelAluno = idResponsavelAluno;
         this.listaEspera = listaEspera;
+        this.idSolicitacaoRespAluno = idSolicitacaoRespAluno;
 
     }
 
     public static AlunoRespostaDTO convertToDTO(Aluno aluno) {
-        return new AlunoRespostaDTO(aluno.getId(), aluno.getNaturalidade(), aluno.getNomeMae(), aluno.getNomePai(), aluno.getIdPessoa(), /*aluno.getIdResponsavel(),*/ aluno.getListaEspera());
+        return new AlunoRespostaDTO(aluno.getId(), aluno.getNaturalidade(), aluno.getNomeMae(), aluno.getNomePai(), aluno.getIdPessoa(), aluno.getIdResponsavelAluno(), aluno.getListaEspera(), aluno.getIdSolicitacaoRespAluno());
     }
 
 
@@ -73,13 +72,13 @@ public class AlunoRespostaDTO {
         this.idPessoa = idPessoa;
     }
 
-    /*public Responsavel getIdResponsavel() {
-        return idResponsavel;
+    public ResponsavelAluno getIdResponsavelAluno() {
+        return idResponsavelAluno;
     }
 
-    public void setIdResponsavel(Responsavel idResponsavel) {
-        this.idResponsavel = idResponsavel;
-    }*/
+    public void setIdResponsavelAluno(ResponsavelAluno idResponsavelAluno) {
+        this.idResponsavelAluno = idResponsavelAluno;
+    }
 
     public Set<ListaEspera> getListaEspera() {
         return listaEspera;
@@ -87,5 +86,13 @@ public class AlunoRespostaDTO {
 
     public void setListaEspera(Set<ListaEspera> listaEspera) {
         this.listaEspera = listaEspera;
+    }
+
+    public SolicitacaoRespAluno getIdSolicitacaoRespAluno() {
+        return idSolicitacaoRespAluno;
+    }
+
+    public void setIdSolicitacaoRespAluno(SolicitacaoRespAluno idSolicitacaoRespAluno) {
+        this.idSolicitacaoRespAluno = idSolicitacaoRespAluno;
     }
 }

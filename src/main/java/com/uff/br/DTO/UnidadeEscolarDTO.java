@@ -2,6 +2,7 @@ package com.uff.br.DTO;
 
 import com.uff.br.entities.AnoEscolaridade;
 import com.uff.br.entities.Endereco;
+import com.uff.br.entities.SolicitacaoRespAluno;
 import com.uff.br.entities.UnidadeEscolar;
 
 
@@ -14,10 +15,11 @@ public class UnidadeEscolarDTO {
     private String data;
     private Endereco endereco;
     private AnoEscolaridade anoEscolaridade;
+    private SolicitacaoRespAluno idSolicitacaoRespAluno;
 
 
     public UnidadeEscolar convertToObject() {
-        return new UnidadeEscolar(nome, numVagas, data, endereco, anoEscolaridade);
+        return new UnidadeEscolar(nome, numVagas, data, endereco, anoEscolaridade, idSolicitacaoRespAluno);
     }
 
     public String getNome() {
@@ -58,5 +60,13 @@ public class UnidadeEscolarDTO {
 
     public void setAnoEscolaridade(AnoEscolaridade anoEscolaridade) {
         this.anoEscolaridade = anoEscolaridade;
+    }
+
+    public SolicitacaoRespAluno getIdSolicitacaoRespAluno() {
+        return idSolicitacaoRespAluno;
+    }
+
+    public void setIdSolicitacaoRespAluno(SolicitacaoRespAluno idSolicitacaoRespAluno) {
+        this.idSolicitacaoRespAluno = idSolicitacaoRespAluno;
     }
 }

@@ -1,9 +1,6 @@
 package com.uff.br.DTO;
 
-import com.uff.br.entities.Aluno;
-import com.uff.br.entities.Endereco;
-import com.uff.br.entities.Pessoa;
-import com.uff.br.entities.Usuario;
+import com.uff.br.entities.*;
 
 import java.util.Set;
 
@@ -18,9 +15,10 @@ public class PessoaDTO {
     private Endereco endereco;
     private Usuario usuario;
     private Set<Aluno> alunos;
+    private Set<Responsavel> responsavel;
 
     public Pessoa convertToObject() {
-        return new Pessoa(nome, identidade, cpf, sexo, celular, dtNasc, endereco, usuario, alunos);
+        return new Pessoa(nome, identidade, cpf, sexo, celular, dtNasc, endereco, usuario, alunos, responsavel);
     }
 
     public String getNome() {
@@ -91,5 +89,13 @@ public class PessoaDTO {
 
     public void setAlunos(Set<Aluno> alunos) {
         this.alunos = alunos;
+    }
+
+    public Set<Responsavel> getResponsavel() {
+        return responsavel;
+    }
+
+    public void setResponsavel(Set<Responsavel> responsavel) {
+        this.responsavel = responsavel;
     }
 }

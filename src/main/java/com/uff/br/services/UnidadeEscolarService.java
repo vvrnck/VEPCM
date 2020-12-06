@@ -43,6 +43,7 @@ public class UnidadeEscolarService {
             ue.get().setData(unidadeEscolar.getData());
             ue.get().setNumVagas(unidadeEscolar.getNumVagas());
             ue.get().setAnoEscolaridade(unidadeEscolar.getAnoEscolaridade());
+            ue.get().setIdSolicitacaoRespAluno(unidadeEscolar.getIdSolicitacaoRespAluno());
         }
         return unidadeEscolarRepository.save(ue.get());
     }

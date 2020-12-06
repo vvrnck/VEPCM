@@ -9,17 +9,19 @@ public class AnoEscolaridadeRespostaDTO {
     private String nome;
     private String descricao;
     private Set<UnidadeEscolar> unidadeEscolar;
+    private SolicitacaoRespAluno idSolicitacaoRespAluno;
 
 
-    private AnoEscolaridadeRespostaDTO(int id, String nome, String descricao, Set<UnidadeEscolar> unidadeEscolar){
+    private AnoEscolaridadeRespostaDTO(int id, String nome, String descricao, Set<UnidadeEscolar> unidadeEscolar, SolicitacaoRespAluno idSolicitacaoRespAluno){
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.unidadeEscolar = unidadeEscolar;
+        this.idSolicitacaoRespAluno = idSolicitacaoRespAluno;
     }
 
     public static AnoEscolaridadeRespostaDTO convertToDTO(AnoEscolaridade ae) {
-        return new AnoEscolaridadeRespostaDTO(ae.getId(), ae.getNome(), ae.getDescricao(), ae.getUnidadeEscolar());
+        return new AnoEscolaridadeRespostaDTO(ae.getId(), ae.getNome(), ae.getDescricao(), ae.getUnidadeEscolar(), ae.getIdSolicitacaoRespAluno());
     }
 
     public int getId() {
@@ -52,5 +54,13 @@ public class AnoEscolaridadeRespostaDTO {
 
     public void setUnidadeEscolar(Set<UnidadeEscolar> unidadeEscolar) {
         this.unidadeEscolar = unidadeEscolar;
+    }
+
+    public SolicitacaoRespAluno getIdSolicitacaoRespAluno() {
+        return idSolicitacaoRespAluno;
+    }
+
+    public void setIdSolicitacaoRespAluno(SolicitacaoRespAluno idSolicitacaoRespAluno) {
+        this.idSolicitacaoRespAluno = idSolicitacaoRespAluno;
     }
 }

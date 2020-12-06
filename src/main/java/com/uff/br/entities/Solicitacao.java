@@ -1,6 +1,6 @@
-/*
 package com.uff.br.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -12,36 +12,24 @@ public class Solicitacao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "data")
+    private String data;
+
     @Column(name = "protocolo")
     private String protocolo;
 
-    @JoinColumn(name = "idAluno", referencedColumnName = "id")
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Aluno idAluno;
+    @JsonIgnore
+    @JoinColumn(name = "idSolicitacaoRespAluno", referencedColumnName = "id")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "idSolicitacao")
+    private SolicitacaoRespAluno idSolicitacaoRespAluno;
 
-    @JoinColumn(name = "idResponsavel", referencedColumnName = "id")
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Responsavel idResponsavel;
+    public Solicitacao() {
+    }
 
-    @JoinColumns({
-       @JoinColumn(name = "idUnidadeEscolar", referencedColumnName = "idUnidadeEscolar")
-     , @JoinColumn(name = "idAnoEscolaridade", referencedColumnName = "idAnoEscolaridade")})
-    @ManyToOne(cascade = CascadeType.ALL)
-    private  UnidadeEscolarAnoEscolaridade unidadeEscolarAnoEscolaridade;
-
-
-   */
-/* @OneToMany(cascade = CascadeType.ALL, mappedBy = "solicitacao")
-    private Set<SolicitacaoResponsavel> solicitacaoResponsavel;
-*//*
-
-   public Solicitacao() {}
-
-    public Solicitacao(String protocolo, Aluno idAluno, Responsavel idResponsavel, UnidadeEscolarAnoEscolaridade unidadeEscolarAnoEscolaridade){
+    public Solicitacao(String data, String protocolo, SolicitacaoRespAluno idSolicitacaoRespAluno) {
+        this.data = data;
         this.protocolo = protocolo;
-        this.idAluno = idAluno;
-        this.idResponsavel = idResponsavel;
-        this.unidadeEscolarAnoEscolaridade = unidadeEscolarAnoEscolaridade;
+        this.idSolicitacaoRespAluno = idSolicitacaoRespAluno;
     }
 
     public int getId() {
@@ -52,6 +40,14 @@ public class Solicitacao {
         this.id = id;
     }
 
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
     public String getProtocolo() {
         return protocolo;
     }
@@ -60,31 +56,12 @@ public class Solicitacao {
         this.protocolo = protocolo;
     }
 
-    public Aluno getIdAluno() {
-        return idAluno;
+    public SolicitacaoRespAluno getIdSolicitacaoRespAluno() {
+        return idSolicitacaoRespAluno;
     }
 
-    public void setIdAluno(Aluno idAluno) {
-        this.idAluno = idAluno;
-    }
-
-    public Responsavel getIdResponsavel() {
-        return idResponsavel;
-    }
-
-    public void setIdResponsavel(Responsavel idResponsavel) {
-        this.idResponsavel = idResponsavel;
-    }
-
-    public UnidadeEscolarAnoEscolaridade getUnidadeEscolarAnoEscolaridade() {
-        return unidadeEscolarAnoEscolaridade;
-    }
-
-    public void setUnidadeEscolarAnoEscolaridade(UnidadeEscolarAnoEscolaridade unidadeEscolarAnoEscolaridade) {
-        this.unidadeEscolarAnoEscolaridade = unidadeEscolarAnoEscolaridade;
+    public void setIdSolicitacaoRespAluno(SolicitacaoRespAluno idSolicitacaoRespAluno) {
+        this.idSolicitacaoRespAluno = idSolicitacaoRespAluno;
     }
 }
 
-
-
-*/
